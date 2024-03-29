@@ -1,8 +1,12 @@
 import React from 'react'
+import { Velustro } from "uvcanvas"
 
 const Playlists = () => {
   return (
-    <div>Playlists</div>
+    <div>
+
+        <Velustro />
+    </div>
   )
 }
 

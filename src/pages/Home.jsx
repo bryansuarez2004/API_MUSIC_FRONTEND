@@ -12,6 +12,10 @@ const Home = () => {
 
 
     useEffect(()=>{
+     //condicionar la peticion para que no se haga cada que este componenete vuelve a la vida
+     // en cada cambio de pagina y no haya peticion innecesaria, aparte de que
+     //se mantengan los datos buscados
+
         dispatch(getMainTracksThunk())
     },[])
 

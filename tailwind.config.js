@@ -13,7 +13,8 @@ export default {
         "tertiary":"#3f3f46"
       },
       fontFamily:{
-        "dongle": "Dongle, sans-serif"
+        "dongle": "Dongle, sans-serif",
+        "rubick": "Rubik, sans-serif"
       }
 
     },
