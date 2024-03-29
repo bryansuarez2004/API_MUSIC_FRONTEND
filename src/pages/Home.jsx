@@ -1,18 +1,30 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { onModePlay } from '../store/slices/playTrack.slice'
+import { getMainTracksThunk } from '../store/slices/tracksHome.slice'
+import Search from '../components/HomePage/Search'
+import TrackList from '../components/shared/TrackList'
 
 const Home = () => {
     const dispatch = useDispatch()
 
-    const handleOpenMusic = ()=>{
-        dispatch(onModePlay())
-    }
+    
+
+
+    useEffect(()=>{
+        dispatch(getMainTracksThunk())
+    },[])
 
   return (
-    <div className='bg-secondary md:m-3 md:ml-0 rounded-md '>
-     <button onClick={handleOpenMusic}>dame click</button>
+    <div className='bg-primary md:p-3  md:pl-0  h-screen '>
 
+    <div className='bg-secondary rounded-md h-[100%] overflow-auto'>
+    <Search />
+   <TrackList />
+
+     
+
+    </div>
     </div>
   )
 }

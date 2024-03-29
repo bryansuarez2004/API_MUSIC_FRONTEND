@@ -18,6 +18,7 @@ const PrincipalStructure = () => {
     <div className='bg-primary'>
     <div className={`${modePlay?'md:w-[75vw]':'w-full'} grid  h-screen   md:grid-cols-[1fr,4fr] transition-all duration-500 relative`}>
         <Aside />
+    
     <Outlet />
 
     <Account />
