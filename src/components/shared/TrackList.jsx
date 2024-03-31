@@ -12,8 +12,8 @@ const TrackList = () => {
 
     <div className=' bg-tertiary rounded-md p-3 max-w-[90%]  md:max-w-[550px] mx-auto grid gap-2 '>
     {
-        isLoading ? [1,2,3,4,5,6,7,8,9,10].map(()=>{
-            return <EsqueletonTrack />
+        isLoading ? [1,2,3,4,5,6,7,8,9,10].map((num)=>{
+            return <EsqueletonTrack key={num} />
         }) :  tracks.map((track)=>{
 
 

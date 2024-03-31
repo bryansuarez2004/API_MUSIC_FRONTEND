@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { offModePlay } from '../../store/slices/playTrack.slice'
 import { Tranquiluxe } from "uvcanvas"
 import { Velustro } from "uvcanvas"
+import AudioTrack from '../ListenTracks/AudioTrack'
+
 
 const ListenTracks = () => {
    const {modePlay,trackInPlay}=useSelector((store)=>store.playTrack)
@@ -23,7 +25,7 @@ const ListenTracks = () => {
       <div className='w-full aspect-square rounded-md overflow-hidden flex justify-center items-center'>
        <img src={trackInPlay.album?.images[1].url} className='absolute w-[70%] rounded-full' alt="" />
 
-      <Tranquiluxe />
+      <Velustro />
       </div>
 
       <h2 className='text-2xl font-bold  pt-3'>{trackInPlay.name}</h2>
@@ -40,10 +42,12 @@ const ListenTracks = () => {
       </div >
       </div>
       <div className='bg-secondary p-2 rounded-md mt-3 '>
+        <AudioTrack trackInPlay={trackInPlay} />
       <button onClick={handleOffModeMusic}>
         ded
        </button>
       </div>
+      
 
        
 

@@ -1,0 +1,56 @@
+
+.rhap_container {
+    background-color:  #1c1917;
+    box-shadow: none;
+} 
+
+.rhap_progress-section * {
+    color: white;
+    gap: 5px;
+    display: flex;
+}
+
+.rhap_progress-filled {
+    background-color: white;
+}
+
+.rhap_progress-indicator{
+    background-color: white;
+}
+
+.rhap_download-progress{
+    background-color: #3f3f46;
+}
+.rhap_controls-section{
+    gap: 2px;
+    display: flex;
+    justify-content: center;
+}
+
+.rhap_main-controls {
+    order: 3;
+   
+}
+.rhap_main-controls * {
+    color: white;
+   
+}
+
+.rhap_additional-controls{
+    flex-grow: 0;
+}
+
+.rhap_additional-controls * {
+      color: white;
+
+}
+
+.rhap_volume-controls{
+   display: flex;
+   justify-content: center;
+}
+
+.rhap_volume-controls * {
+    color: white;
+
+ }

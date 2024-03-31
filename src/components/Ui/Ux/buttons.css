@@ -1,0 +1,44 @@
+.middle {
+    display: flex;
+    gap: 2px;
+    align-items: end;
+  }
+  
+  .bar {
+    width: 4px;
+   
+    display: inline-block;
+    transform-origin: bottom center;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    box-shadow: 5px 10px 20px inset rgba(255, 23, 25.2);
+    animation: loader 1.3s linear infinite;
+  }
+  
+  .bar1 {
+   height: 20px;
+    animation-delay: 0.1s;
+  }
+  .bar2 {
+    animation-delay: 0.2s;
+    height: 14px;
+  }
+  .bar3 {
+    animation-delay: 0.3s;
+    height: 10px;
+  }
+  
+  @keyframes loader {
+    0% {
+      transform: scaleY(0.1);
+      background: transparent; /* Change background to transparent */
+    }
+    50% {
+      transform: scaleY(1);
+      background: #e74c3c; /* Change background to a shade of red */
+    }
+    100% {
+      transform: scaleY(0.1);
+      background: transparent; /* Change background to transparent */
+    }
+  }
