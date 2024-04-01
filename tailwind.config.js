@@ -10,7 +10,8 @@ export default {
       colors: {
         "primary": "#09090b",
         "secondary": "#1c1917",
-        "tertiary":"#3f3f46"
+        "tertiary":"#3f3f46",
+        "ligter":"#4ade80"
       },
       fontFamily:{
         "dongle": "Dongle, sans-serif",

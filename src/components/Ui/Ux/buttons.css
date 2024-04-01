@@ -1,3 +1,5 @@
+
+
 .middle {
     display: flex;
     gap: 2px;
@@ -11,7 +13,6 @@
     transform-origin: bottom center;
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
-    box-shadow: 5px 10px 20px inset rgba(255, 23, 25.2);
     animation: loader 1.3s linear infinite;
   }
   
@@ -35,7 +36,7 @@
     }
     50% {
       transform: scaleY(1);
-      background: #e74c3c; /* Change background to a shade of red */
+      background: #4ade80 ; /* Change background to a shade of red */
     }
     100% {
       transform: scaleY(0.1);

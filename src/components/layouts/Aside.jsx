@@ -53,7 +53,7 @@ export const ButtonAside = ({page,icon,text,nav,currentSection,setCurrentSection
 
 
   return (
-    <button onClick={handleClick} className={`${ currentSection === page ? 'bg-secondary text-white' :'text-zinc-400'}  p-5 flex hover:bg-tertiary items-center gap-3 hover:text-white rounded-md `}>{icon} <span className='hidden md:flex  text-2xl font-dongle  pt-1 font-[400] tracking-wide ml-2'>{text}</span></button>
+    <button onClick={handleClick} className={`${ currentSection === page ? 'bg-secondary text-ligter' :'text-zinc-400'}  p-5 flex  items-center gap-3 hover:text-ligter rounded-md `}>{icon} <span className='hidden md:flex  text-2xl font-dongle  pt-1 font-[400] tracking-wide ml-2'>{text}</span></button>
   )
 }
 
