@@ -44,7 +44,7 @@ const ListenTracks = () => {
       <div className='bg-secondary p-2 rounded-md mt-3 '>
         <AudioTrack trackInPlay={trackInPlay} />
       <button onClick={handleOffModeMusic}>
-        ded
+        cerrar modo musica
        </button>
       </div>
       

@@ -5,6 +5,7 @@ import { numeroAleatorio } from "../utils/getRandomNum";
 import { FaPlay } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { onModePlay, setTrackInPlay } from "../store/slices/playTrack.slice";
+import TrackListInfo from "../components/TrackInfo/TrackListInfo";
 
 const colors = {
     1 : "bg-sky-500",
@@ -13,9 +14,9 @@ const colors = {
 } 
 
 const gradients = {
-    1 : "linear-gradient(180deg, rgba(34,193,195,0.7) 0%, rgba(253,45,45,0) 86%)",
-    2 : "linear-gradient(180deg, rgba(249,115,22,0.7) 0%, rgba(253,45,45,0) 86%)",
-    3: "linear-gradient(180deg, rgba(168,85,247,0.7) 0%, rgba(253,45,45,0) 86%)"
+    1 : "linear-gradient(180deg, rgba(34,193,195,0.7) 0%, rgba(253,45,45,0) 78%)",
+    2 : "linear-gradient(180deg, rgba(249,115,22,0.7) 0%, rgba(253,45,45,0) 78%)",
+    3: "linear-gradient(180deg, rgba(168,85,247,0.7) 0%, rgba(253,45,45,0) 78%)"
 }
 
 
@@ -47,10 +48,10 @@ const TrackInfo = () => {
   return (
     <div className="bg-primary md:p-3  md:pl-0  h-screen ">
       <div className="bg-secondary rounded-md h-[100%] overflow-auto">
-        <section className= {`${colors[numero]} pt-[50px] flex flex-col md:flex-row md:items-end items-center gap-5 p-7 `}>
+        <section className= {`${colors[numero]} pt-[50px] flex flex-col md:flex-row md:items-end items-center gap-5 p-7  min-h-[250px]`}>
           <img className="aspect-square max-w-[180px] shadow-xl shadow-black" src={TrackInfo.album?.images[1].url} alt="" />
           <div className="grid">
-            <h3 className="font-rubick">Cancion</h3>
+            {  TrackInfo.type &&  <h3 className="font-rubick">Cancion</h3>}
             <h2 className="text-5xl font-rubick font-bold">{TrackInfo.name}</h2>
             <div className='flex text-primary '>
                 {
@@ -73,7 +74,8 @@ const TrackInfo = () => {
           
           </div>
 
-          <div>
+          <div className="min-h-[500px]">
+            { TrackInfo.name && <TrackListInfo nameTrack={`${TrackInfo.name}`} />}
             {/* aqui van las canciones */}
           </div>
 
