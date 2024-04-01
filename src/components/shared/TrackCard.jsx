@@ -3,6 +3,7 @@ import { FaPlay } from "react-icons/fa";
 import { useDispatch, useSelector } from 'react-redux';
 import { onModePlay, setTrackInPlay } from '../../store/slices/playTrack.slice';
 import { ListenIcon } from '../Ui/Ux/Buttons';
+import { Link } from 'react-router-dom';
 
 const TrackCard = ({track}) => {
      const dispatch = useDispatch()
@@ -28,14 +29,14 @@ const TrackCard = ({track}) => {
               <img className='aspect-square   w-[50px] rounded-sm' src={track.album.images[2].url} alt="" />
         </header>
         <div className='grow    '>
-            <h3 className={`${trackInPlay.id === track.id ? 'text-ligter ' : ''}  line-clamp-1 `}>{track.name}</h3>
+            <Link to={`/track/${track.id}`} className={`${trackInPlay.id === track.id ? 'text-ligter ' : ''}   hover:underline `}>{track.name}</Link>
             <div className='flex text-gray-400'>
                 {
                     track.artists.slice(0,3).map((artist,index) => (
-                         <div key={artist.id}  className=' text-sm'>
+                         <Link to={`/artist/${artist.id}`} key={artist.id}  className=' text-sm hover:underline'>
                              {artist.name}
                             {track.artists.slice(0,3).length - 1  !== index && <span>,  </span> }
-                         </div>
+                         </Link>
                          
                     )) 
                 }
