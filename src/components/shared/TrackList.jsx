@@ -9,8 +9,8 @@ const TrackList = () => {
   return (
    <>
    
-
-    <div className='  rounded-md p-3 max-w-[90%]  md:max-w-[550px] mx-auto grid gap-2 '>
+   
+    <div className='  rounded-md p-3 max-w-[90%]  md:max-w-[700px] mx-auto grid gap-2 '>
     {
         isLoading ? [1,2,3,4,5,6,7,8,9,10].map((num)=>{
             return <EsqueletonTrack key={num} />
@@ -36,7 +36,7 @@ const TrackList = () => {
 
 export const EsqueletonTrack = () => {
   return (
-    <div className=' p-2 rounded-md bg-tertiary '>
+    <div className=' p-2 rounded-md bg-tertiary/30 '>
             <div className="animate-pulse flex gap-3 ">
              <div className="rounded-full bg-secondary aspect-square w-12"></div>
              <div className="grid w-full pt-1">
