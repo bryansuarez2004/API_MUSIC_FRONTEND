@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import HeaderArtist from '../components/ArtistPage/HeaderArtist'
 import { axiosMusic } from '../utils/configAxios'
 import { useParams } from 'react-router-dom'
+import Albums from '../components/ArtistPage/Albums'
 
 const Artists = () => {
 
@@ -27,7 +28,10 @@ const Artists = () => {
     <div className='bg-secondary rounded-md h-[100%] overflow-auto'>
    
        <HeaderArtist ArtistInCurrentPage={ArtistInCurrentPage} isLoading={isLoading} />
-    
+       <div style={{background:`linear-gradient(180deg, rgba(34,193,195,0.7) 0%, rgba(253,45,45,0) 78%)`}}>
+
+        <Albums />
+       </div>
      
 
     </div>

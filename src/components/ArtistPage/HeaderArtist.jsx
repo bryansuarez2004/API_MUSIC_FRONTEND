@@ -7,10 +7,10 @@ const HeaderArtist = ({ArtistInCurrentPage,isLoading}) => {
 
   return (
     <section 
-    className= {`pt-[50px] bg-no-repeat inset-0 bg-cover bg-bottom bg-black/35 relative flex flex-col md:flex-row md:items-end items-center gap-5 p-7  min-h-[250px]`}>
+    className= {`pt-[50px]  inset-0 bg-cover bg-bottom bg-black/35 relative flex flex-col md:flex-row md:items-end items-center gap-5 p-7  min-h-[250px]`}>
           
           {
-           !isLoading && (<img src={ArtistInCurrentPage.images?.[0].url} className="left-0 top-0 w-full h-full object-cover absolute opacity-50 " alt="Imagen de fondo"></img>)
+           !isLoading && (<img src={ArtistInCurrentPage.images?.[0].url} className="left-0 top-0 w-full h-full object-cover absolute opacity-50  " alt="Imagen de fondo"></img>)
           }
           
            
@@ -19,17 +19,21 @@ const HeaderArtist = ({ArtistInCurrentPage,isLoading}) => {
           
           <div className="grid z-10 ">
             <h2 className="text-5xl font-rubick font-bold text-white">{ArtistInCurrentPage.name}</h2>
-            {/* <div className='flex text-primary '>
+             <div className='flex text-white gap-2 pt-3 flex-wrap font-rubick'>
                 {
-                  TrackInfo.artists?.slice(0,3).map((artist,index) => (
-                    <Link to={`/artist/${artist.id}`} key={artist.id}  className=' text-sm hover:underline'>
-                             {artist.name}
-                            {TrackInfo.artists.slice(0,3).length - 1  !== index && <span>,  </span> }
-                         </Link>
+                  ArtistInCurrentPage.genres?.map((genre,index) => (
+                    <div key={genre}  className=' text-sm  p-2 py-1  rounded-full border-2'>
+                             {genre}
+                         </div>
                          
                          )) 
                 }
-            </div > */}
+            </div > 
+            <div className='text-gray-300 font-rubick text-sm pt-2 '>
+                {
+                 ArtistInCurrentPage.followers?.total.toLocaleString('en-US', {useGrouping: true})
+                }   {  ArtistInCurrentPage.followers &&  `  seguidores`}
+            </div>
           </div>
           
         </section>
