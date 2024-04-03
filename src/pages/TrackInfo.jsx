@@ -59,7 +59,7 @@ const TrackInfo = () => {
           <div className="grid">
             {  TrackInfo.type &&  <h3 className="font-rubick">Cancion</h3>}
             <h2 className="text-5xl font-rubick font-bold">{TrackInfo.name}</h2>
-            <div className='flex text-primary '>
+            <div className='flex text-gray-300 font-rubick '>
                 {
                   TrackInfo.artists?.slice(0,3).map((artist,index) => (
                     <Link to={`/artist/${artist.id}`} key={artist.id}  className=' text-sm hover:underline'>

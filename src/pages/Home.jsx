@@ -7,7 +7,7 @@ import TrackList from '../components/shared/TrackList'
 
 const Home = () => {
     const dispatch = useDispatch()
-    const {tracks} = useSelector((store)=>store.tracksHome)
+   const {tracks,isLoading} = useSelector((store)=>store.tracksHome)
     
 
 
@@ -28,7 +28,7 @@ const Home = () => {
 
     <div className='bg-secondary rounded-md h-[100%] overflow-auto'>
     <Search />
-   <TrackList />
+   <TrackList tracks={tracks} isLoading={isLoading} />
 
      
 

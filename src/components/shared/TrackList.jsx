@@ -2,8 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import TrackCard from './TrackCard'
 
-const TrackList = () => {
-   const {tracks,isLoading} = useSelector((store)=>store.tracksHome)
+const TrackList = ({tracks,isLoading,functionOfArtist}) => {
 
 
   return (
@@ -14,10 +13,10 @@ const TrackList = () => {
     {
         isLoading ? [1,2,3,4,5,6,7,8,9,10].map((num)=>{
             return <EsqueletonTrack key={num} />
-        }) :  tracks.map((track)=>{
+        }) :  tracks?.map((track)=>{
 
 
-            return <TrackCard key={track.id} track={track} />
+            return <TrackCard key={track.id} functionOfArtist={functionOfArtist} track={track} />
         })
     }
     

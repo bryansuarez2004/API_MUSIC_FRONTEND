@@ -3,18 +3,31 @@ import { FaPlay } from "react-icons/fa";
 import { useDispatch, useSelector } from 'react-redux';
 import { onModePlay, setTrackInPlay } from '../../store/slices/playTrack.slice';
 import { ListenIcon } from '../Ui/Ux/Buttons';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-const TrackCard = ({track}) => {
+const TrackCard = ({track,functionOfArtist}) => {
      const dispatch = useDispatch()
    const {isListen , trackInPlay,modePlay}  = useSelector((store)=> store.playTrack)
     const [hover, setHover] = useState(false)
+    const navigate = useNavigate()
 
     const handleOpenMusic = ()=>{
         dispatch(onModePlay())
          dispatch(setTrackInPlay(track))
          //aqui falta poner los datos al estado de reproduccion de musica
     }
+   
+
+
+    const handleClickArtist = (id) =>{
+      navigate(`/artist/${id}`)
+
+      if(functionOfArtist){
+
+        functionOfArtist(id)
+      }
+    }
+
 
   return (
     <article onMouseOver={()=>setHover(true)} onMouseOut={()=>setHover(false)} className={`${trackInPlay.id === track.id ? 'bg-white/10 ' : ''} flex  gap-2 font-rubick items-center text-white p-3 hover:bg-white/30 rounded-md h-[60px]`} >
@@ -33,10 +46,10 @@ const TrackCard = ({track}) => {
             <div className='flex text-gray-400'>
                 {
                     track.artists.slice(0,3).map((artist,index) => (
-                         <Link to={`/artist/${artist.id}`} key={artist.id}  className=' text-sm hover:underline'>
+                         <button onClick={()=>handleClickArtist(artist.id)} key={artist.id}  className=' text-sm hover:underline'>
                              {artist.name}
                             {track.artists.slice(0,3).length - 1  !== index && <span>,  </span> }
-                         </Link>
+                         </button>
                          
                     )) 
                 }
