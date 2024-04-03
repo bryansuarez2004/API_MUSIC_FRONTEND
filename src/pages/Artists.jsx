@@ -36,27 +36,31 @@ const Artists = () => {
   return (
     <div className="bg-primary md:p-3  md:pl-0  h-screen ">
       <div className="bg-secondary rounded-md h-[100%] w-full overflow-auto">
-        <HeaderArtist
-          ArtistInCurrentPage={ArtistInCurrentPage}
-          isLoading={isLoading}
-        />
+        {
+          isLoading ? <div className="h-[260px] bg-secondary animate-pulse"></div>
+ : (<HeaderArtist
+  ArtistInCurrentPage={ArtistInCurrentPage}
+  isLoading={isLoading}
+/>)        }
         <div
           style={{
             background: `linear-gradient(180deg, rgba(216,230,243,0.2) 0%, rgba(253,45,45,0) 60%)`,
           }}
         >
-          <Albums ArtistInCurrentPage={ArtistInCurrentPage} />
+          <Albums ArtistInCurrentPage={ArtistInCurrentPage} isLoading={isLoading} />
 
-          {ArtistInCurrentPage.name && (
-            <div>
-              <div className="font-rubick text-sm pl-5 text-gray-300">
-                Canciones populares de
+          {
+            !isLoading && (ArtistInCurrentPage.name && (
+              <div>
+                <div className="font-rubick text-sm pl-5 text-gray-300">
+                  Canciones populares de
+                </div>
+                <div className="font-rubick text-2xl font-bold pl-5 text-white mb-5">
+                  {ArtistInCurrentPage.name}
+                </div>
               </div>
-              <div className="font-rubick text-2xl font-bold pl-5 text-white">
-                {ArtistInCurrentPage.name}
-              </div>
-            </div>
-          )}
+            ))
+          }
 
           <TrackList
             tracks={ArtistInCurrentPage.songsTop}
