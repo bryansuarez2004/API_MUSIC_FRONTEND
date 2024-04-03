@@ -5,7 +5,10 @@ const tracksHome = createSlice({
     name:'tracksHome',
     initialState:{ 
         tracks:[],
-        isLoading:false
+        isLoading:false,
+        artists:[],
+        isLoadingArtist:false
+        
 
     },
     reducers:{
@@ -17,11 +20,20 @@ const tracksHome = createSlice({
       },
       isLoadingOff:(state,action)=>{
         state.isLoading = false
-      }      
+      },
+      setArtists:(state,action)=>{
+        state.artists = action.payload
+    },
+     isLoadingOnArtist :(state,action)=>{
+      state.isLoadingArtist = true
+  },     
+  isLoadingOffArtist : (state,action)=>{
+    state.isLoadingArtist = false
+}
     }
 })
 
-export const {setTracks,isLoadingOn,isLoadingOff}=tracksHome.actions
+export const {setTracks,isLoadingOn,isLoadingOff,setArtists,isLoadingOnArtist,isLoadingOffArtist}=tracksHome.actions
 
 export default tracksHome.reducer
 
@@ -52,5 +64,17 @@ export const searchTracksThunk = (objectSearch)=> (dispatch)=>{
 } 
 
 
+export const getMainArtistsThunk = () => (dispatch) =>{
+  dispatch(isLoadingOnArtist())
+  axiosMusic.get('/artists/topArtist')
+  .then(({ data }) => {
+     console.log(data);
+     dispatch(setArtists(data))
+      dispatch(isLoadingOffArtist())
+     
+   })
+   .catch((err) => console.log(err));
 
+
+}
 

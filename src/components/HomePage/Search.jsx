@@ -18,7 +18,7 @@ const Search = () => {
 
   return (
     <form className="flex  gap-4 p-2" onSubmit={onSubmit}>
-      <div className="flex  items-center  gap-2 p-2 py-3 rounded-full bg-tertiary  w-full max-w-[80%] md:max-w-[60%]">
+      <div className="flex  items-center  gap-2 p-2 py-3 rounded-full bg-tertiary mx-auto mb-6  w-full max-w-[80%] md:max-w-[60%]">
         <CgSearch className="text-2xl text-white" />
         <input
           placeholder="¿Que deseas escuchar?"

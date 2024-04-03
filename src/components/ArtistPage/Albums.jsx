@@ -18,10 +18,10 @@ const Albums = ({ArtistInCurrentPage}) => {
  
  const getWidth = () =>{
    if(windowWidth < 700){
-    const widthSlide =  windowWidth - 40
+    const widthSlide =  windowWidth - 200
     return widthSlide
    }
-   const widthSlide =  windowWidth - 320
+   const widthSlide =  windowWidth - 300
     return widthSlide
    
  }
@@ -30,7 +30,7 @@ const Albums = ({ArtistInCurrentPage}) => {
   if(modePlay){
     const newwidth = width - (width * 0.3)
     console.log('nuevo width' + (newwidth - 20));
-    setWindowWidth(newwidth - 20)
+    setWindowWidth(newwidth)
   }else{
  setWindowWidth(width)
     console.log( 'nuevo width' + width);
@@ -45,18 +45,17 @@ const Albums = ({ArtistInCurrentPage}) => {
 
     }
     
-    if(windowWidth > 700 ){
-       slidesPerView = 5
-
+    if(windowWidth > 600 ){
+      if(modePlay){
+        slidesPerView = 3
+       }else{
+        slidesPerView = 4
+       } 
      }
 
-     if(windowWidth > 800 ){
-      slidesPerView = 6
-      
-    }
+
     
     if(windowWidth > 900 ){
-       slidesPerView = 7
        if(modePlay){
         slidesPerView = 5
        }else{
@@ -91,7 +90,7 @@ ArtistInCurrentPage.name &&
   </div>
 </div>
             }
-      <div style={{maxWidth: `${getWidth()}px`}} className='  md:max-w-[500px] mx-auto p-10 pt-0 transition-all duration-500  '>
+      <div style={{maxWidth: `${getWidth()}px`}} className='   mx-auto p-10 pt-0 transition-all duration-500  '>
       <Swiper
             slidesPerView={getSlidesPerView()}
             spaceBetween={30}

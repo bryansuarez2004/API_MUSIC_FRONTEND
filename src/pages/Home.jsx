@@ -4,6 +4,7 @@ import { onModePlay } from '../store/slices/playTrack.slice'
 import { getMainTracksThunk } from '../store/slices/tracksHome.slice'
 import Search from '../components/HomePage/Search'
 import TrackList from '../components/shared/TrackList'
+import ArtistSlider from '../components/HomePage/ArtistSlider'
 
 const Home = () => {
     const dispatch = useDispatch()
@@ -27,7 +28,11 @@ const Home = () => {
     <div className='bg-primary md:p-3  md:pl-0  h-screen '>
 
     <div className='bg-secondary rounded-md h-[100%] overflow-auto'>
+    
+  <ArtistSlider />
+
     <Search />
+    <div className='font-rubick text-2xl font-bold pl-6 text-white'>Canciones</div>
    <TrackList tracks={tracks} isLoading={isLoading} />
 
      
