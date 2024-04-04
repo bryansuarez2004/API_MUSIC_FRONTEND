@@ -4,8 +4,10 @@ import { IoLibraryOutline } from "react-icons/io5";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BsBookmarkPlus } from "react-icons/bs";
 import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { offModePlay } from '../../store/slices/playTrack.slice';
+import { ToastContainer, toast } from 'react-toastify';
+
 
 
    
@@ -41,14 +43,35 @@ const Aside = () => {
 
 
 export const ButtonAside = ({page,icon,text,nav,currentSection,setCurrentSection}) => {
-    
+    const  {token} = useSelector((store)=> store.user)
    const navigate = useNavigate()
 
    
 
    const handleClick = ()=>{
-    navigate(nav)
-    setCurrentSection(page)
+
+    if(page === 1){
+      navigate(nav)
+      setCurrentSection(page)
+    }else{
+      if(token !== ''){
+        //logica que se hace cuando tiene token
+        navigate(nav)
+        setCurrentSection(page)
+       
+      }else{
+        toast.warn("Debes hacer login", {
+          autoClose: 1700,
+  closeOnClick: true,
+  pauseOnHover: false,
+        });
+      } 
+
+
+    }
+    
+    
+    
    }
 
 
