@@ -19,7 +19,15 @@ const user = createSlice({
     initialState:{ 
         name: verifySessionStorage('name'),
         email: verifySessionStorage('email'),
-        token: verifySessionStorage('token')
+        token: verifySessionStorage('token'),
+        favorites: {
+            tracks:[],
+            isLoading:false
+        },
+        playlists:{
+            data:[],
+            isLoading:false
+        }
         
 
     },
@@ -33,6 +41,9 @@ const user = createSlice({
         state.name = ''
         state.email = ''
         state.token = ''
+       },
+       setFavoriteTracks : (state,action)=>{
+         state.favorites.tracks = action.payload
        }
     }
 })
@@ -69,3 +80,10 @@ export const loginUserThunk = (data)=> (dispatch)=>{
 
 
 } 
+
+
+export const getFavoritesTracksThunk = () => (dispatch)=>{
+    axiosMusic.get('/users/favoriteTracks')
+    .then(({data})=>console.log(data))
+    .catch((err)=>console.log(err))
+}
