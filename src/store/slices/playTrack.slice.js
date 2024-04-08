@@ -24,10 +24,12 @@ const playTrack = createSlice({
     },setListenOff : (state,action)=>{
         state.isListen = false
     },
-     
+      removeCurrentTrack : (state,action)=>{
+   state.trackInPlay = {}
+      }
     }
 })
 
-export const {onModePlay,offModePlay,setTrackInPlay,setListenOn,setListenOff}=playTrack.actions
+export const {onModePlay,offModePlay,setTrackInPlay,setListenOn,setListenOff,removeCurrentTrack}=playTrack.actions
 
 export default playTrack.reducer

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getFavoritesTracksThunk } from '../store/slices/user.slice'
 import { ButtonLike } from '../components/Ui/Ux/Buttons'
 import TrackList from '../components/shared/TrackList'
+import HeaderFavorites from '../components/FavoritesPage/HeaderFavorites'
 
 const Favorites = () => {
     const dispatch = useDispatch()
@@ -16,8 +17,8 @@ const Favorites = () => {
 
     <div className='bg-secondary rounded-md h-[100%] overflow-auto'>
      
-     
-    <TrackList isLoading={favorites.isLoading} tracks={favorites.tracks} />     
+      <HeaderFavorites />
+    <TrackList isLoading={favorites.isLoading} tracks={favorites.tracks} btnLike />     
 
     </div>
     </div>

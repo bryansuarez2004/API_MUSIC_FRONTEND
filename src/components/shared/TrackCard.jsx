@@ -22,6 +22,7 @@ const TrackCard = ({track,functionOfArtist,btnLike}) => {
    
 
     useEffect(()=>{
+      console.log('analizando');
     if(btnLike){
        const isFavorite =  favorites.tracks.some((trackFavorite)=>{
        
@@ -33,7 +34,9 @@ const TrackCard = ({track,functionOfArtist,btnLike}) => {
         }
     } 
 
-    },[favorites.tracks])
+    },[])
+
+
 
     const handleClickArtist = (id) =>{
       navigate(`/artist/${id}`)

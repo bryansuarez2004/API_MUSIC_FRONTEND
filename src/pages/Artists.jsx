@@ -66,6 +66,7 @@ const Artists = () => {
             tracks={ArtistInCurrentPage.songsTop}
             isLoading={isLoading}
             functionOfArtist={functionOfArtist}
+            btnLike
           />
         </div>
       </div>

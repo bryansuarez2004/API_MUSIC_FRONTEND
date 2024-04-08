@@ -41,6 +41,7 @@ const user = createSlice({
         state.name = ''
         state.email = ''
         state.token = ''
+        state.favorites.tracks = []
        },
        setFavoriteTracks : (state,action)=>{
          state.favorites.tracks = action.payload
@@ -50,12 +51,21 @@ const user = createSlice({
        },
        isLoginOff : (state,action)=>{
       state[action.payload].isLoading = false
+       },
+       addFavoriteTrack : (state,action) =>{
+         state.favorites.tracks.push(action.payload)
+       },
+       removeFavoriteTracks : (state,action) =>{
+        const idTrackToDelete = action.payload
+         const newFavoriteTracks = state.favorites.tracks.filter((track)=>{
+              return track.id !== idTrackToDelete
+         })
+         state.favorites.tracks = newFavoriteTracks
        }
-
     }
 })
 
-export const {setLoginUsers,logOutSesion,isLoginOff,isLoginOn,setFavoriteTracks}=user.actions
+export const {setLoginUsers,logOutSesion,isLoginOff,isLoginOn,setFavoriteTracks,addFavoriteTrack,removeFavoriteTracks}=user.actions
 
 export default user.reducer
 
@@ -71,6 +81,7 @@ export const loginUserThunk = (data)=> (dispatch)=>{
       console.log(data);
       toast.update(id, { render: `bienvenido ${data.name}`, type: "success", isLoading: false, autoClose:1700,pauseOnHover: false,closeOnClick: true, });
       dispatch(setLoginUsers(data))
+      dispatch(getFavoritesTracksThunk())
       sessionStorage.setItem('user', JSON.stringify(data));
    })
    .catch((err)=>{

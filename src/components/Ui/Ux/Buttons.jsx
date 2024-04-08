@@ -4,6 +4,10 @@ import { Link, useNavigate } from 'react-router-dom'
 import { PiHouseBold } from "react-icons/pi";
 import { BsHouseFill } from "react-icons/bs";
 import { axiosMusic } from '../../../utils/configAxios';
+import { useDispatch, useSelector } from 'react-redux'
+import { addFavoriteTrack, removeFavoriteTracks } from '../../../store/slices/user.slice';
+import { ToastContainer, toast } from 'react-toastify';
+import { removeCurrentTrack } from '../../../store/slices/playTrack.slice';
 
 
 
@@ -20,9 +24,11 @@ const ListenIcon = () => {
 
 const ButtonToHome = () => {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
   const handleToHome = ()=>{
     navigate('/')
+   dispatch(removeCurrentTrack())
   }
 
 
@@ -39,20 +45,54 @@ const ButtonToHome = () => {
 }
 
 const ButtonLike =({isLiked,setIsLiked,track})=>{
+    const dispatch = useDispatch()
+    const  {token} = useSelector((store)=> store.user)
 
  //necesita un estado que verifica si esta en tru o false
  const handleFavoriteBtn =() =>{
-   if(isLiked){
-    //logica para quitar me gusta
-    
-         setIsLiked(false)
-   }else{
-    //logica para dara me gusta
-    axiosMusic.post(`/users/addTracks/${track.id}`)
-    .then(({data})=>console.log(data))
-    .catch((err)=>console.log(err))
+
+  if(token !== ''){
+    if(isLiked){
+     
+
+      //logica para quitar me gusta
+      const id = toast.loading("Quitando cancion de favoritos...")
+  
+        axiosMusic.delete(`/users/removeTracks/${track.id}`)
+        .then(({data})=>{ 
+          console.log(data)
+          toast.update(id, { render: `cancion quitada de favoritos`, type: "success", isLoading: false, autoClose:1700,pauseOnHover: false,closeOnClick: true, });
+          dispatch(removeFavoriteTracks(data.spotifyId))
+          setIsLiked(false)
+        })
+        .catch((err)=>console.log(err))
+         
+           
+     }else{
+      //logica para dara me gusta
+  
+      const id = toast.loading("Agregando cancion de favoritos...")
+  
+      axiosMusic.post(`/users/addTracks/${track.id}`)
+      .then(({data})=>{ 
+        toast.update(id, { render: `cancion agregada a favoritos`, type: "success", isLoading: false, autoClose:1700,pauseOnHover: false,closeOnClick: true, });
         setIsLiked(true)
-   }  
+        dispatch(addFavoriteTrack(data))
+        console.log(data)
+      })
+      .catch((err)=>console.log(err))
+     }  
+   
+  }else{
+    toast.warn("Debes hacer login para tener tu propia seccion de favoritos", {
+      autoClose: 1700,
+closeOnClick: true,
+pauseOnHover: false,
+    });
+  } 
+
+
+   
  }
 
   return (

@@ -11,9 +11,25 @@ import Artists from './pages/Artists'
 import TrackInfo from './pages/TrackInfo'
 import { ToastContainer } from 'react-toastify';
 import PrivateRoutes from './components/Auth/PrivateRoutes'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getFavoritesTracksThunk } from './store/slices/user.slice'
 
 
 function App() {
+  const dispatch = useDispatch()
+  const {favorites} = useSelector((store)=>store.user)
+  
+
+   useEffect(()=>{
+
+    if(favorites.tracks.length === 0 ){
+      //hacerla solo si esta logueado
+
+      dispatch(getFavoritesTracksThunk())
+    }
+   },[])   
+
 
   return (
     <>
