@@ -1,15 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaPlay } from "react-icons/fa";
 import { useDispatch, useSelector } from 'react-redux';
 import { onModePlay, setTrackInPlay } from '../../store/slices/playTrack.slice';
-import { ListenIcon } from '../Ui/Ux/Buttons';
+import { ButtonLike, ListenIcon } from '../Ui/Ux/Buttons';
 import { Link, useNavigate } from 'react-router-dom';
 
-const TrackCard = ({track,functionOfArtist}) => {
+const TrackCard = ({track,functionOfArtist,btnLike}) => {
      const dispatch = useDispatch()
    const {isListen , trackInPlay,modePlay}  = useSelector((store)=> store.playTrack)
-    const [hover, setHover] = useState(false)
-    const navigate = useNavigate()
+   const [hover, setHover] = useState(false)
+   const navigate = useNavigate()
+   const {favorites} = useSelector((store)=>store.user)
+   const [isLiked, setIsLiked] = useState(false)
+
 
     const handleOpenMusic = ()=>{
         dispatch(onModePlay())
@@ -18,6 +21,19 @@ const TrackCard = ({track,functionOfArtist}) => {
     }
    
 
+    useEffect(()=>{
+    if(btnLike){
+       const isFavorite =  favorites.tracks.some((trackFavorite)=>{
+       
+               return trackFavorite.id === track.id
+       });
+       
+        if(isFavorite){
+          setIsLiked(true)
+        }
+    } 
+
+    },[favorites.tracks])
 
     const handleClickArtist = (id) =>{
       navigate(`/artist/${id}`)
@@ -39,13 +55,13 @@ const TrackCard = ({track,functionOfArtist}) => {
             
             }
             
-              <img className='aspect-square   w-[50px] rounded-sm' src={track.album.images[2].url} alt="" />
+              <img className='aspect-square   w-[50px] rounded-sm' src={track.album?.images[2].url} alt="" />
         </header>
         <div className='grow    '>
             <Link to={`/track/${track.id}`} className={`${trackInPlay.id === track.id ? 'text-ligter ' : ''}   hover:underline `}>{track.name}</Link>
             <div className='flex text-gray-400'>
                 {
-                    track.artists.slice(0,3).map((artist,index) => (
+                    track.artists?.slice(0,3).map((artist,index) => (
                          <button onClick={()=>handleClickArtist(artist.id)} key={artist.id}  className=' text-sm hover:underline'>
                              {artist.name}
                             {track.artists.slice(0,3).length - 1  !== index && <span>,  </span> }
@@ -59,7 +75,9 @@ const TrackCard = ({track,functionOfArtist}) => {
           {
             (isListen && trackInPlay.id === track.id) && <ListenIcon /> 
           }
-            
+          {
+            btnLike && <ButtonLike isLiked={isLiked} setIsLiked={setIsLiked} track={track} />
+          }  
         </div>
 
     </article>

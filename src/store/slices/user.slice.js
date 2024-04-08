@@ -44,11 +44,18 @@ const user = createSlice({
        },
        setFavoriteTracks : (state,action)=>{
          state.favorites.tracks = action.payload
+       },
+       isLoginOn : (state,action) =>{
+         state[action.payload].isLoading = true
+       },
+       isLoginOff : (state,action)=>{
+      state[action.payload].isLoading = false
        }
+
     }
 })
 
-export const {setLoginUsers,logOutSesion}=user.actions
+export const {setLoginUsers,logOutSesion,isLoginOff,isLoginOn,setFavoriteTracks}=user.actions
 
 export default user.reducer
 
@@ -83,7 +90,12 @@ export const loginUserThunk = (data)=> (dispatch)=>{
 
 
 export const getFavoritesTracksThunk = () => (dispatch)=>{
+   dispatch(isLoginOn('favorites'))
+
     axiosMusic.get('/users/favoriteTracks')
-    .then(({data})=>console.log(data))
+    .then(({data})=>{
+         dispatch(setFavoriteTracks(data))
+         dispatch(isLoginOff('favorites'))
+        console.log(data)})
     .catch((err)=>console.log(err))
 }
