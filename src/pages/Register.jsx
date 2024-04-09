@@ -1,12 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { ButtonToHome } from '../components/Ui/Ux/Buttons'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
-import { axiosMusic } from '../utils/configAxios'
+import { axiosMusic, cancelTokenSource } from '../utils/configAxios'
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
+
 
 const Register = () => {
+  useEffect(()=>{
+    cancelTokenSource.cancel()
+
+  },[])
+
   return (
     <div className='bg-teal-950 min-h-screen justify-evenly  md:flex-row flex  items-center pt-12'>
     
@@ -25,14 +32,14 @@ const FormRegister = () => {
   const {register,handleSubmit,formState} = useForm()
    const {errors} = formState
 
-
+ 
 
 
   const submitRegister = handleSubmit((data)=>{
      console.log(data);
      const id = toast.loading("Creando cuenta...")
 
-     axiosMusic.post('/users/register',data)
+     axios.post('https://api-music-backend.onrender.com/users/register',data)
      .then(({data})=>{
         console.log(data);
       toast.update(id, { render: `cuenta creada con exito`, type: "success", isLoading: false, autoClose:1700,pauseOnHover: false,closeOnClick: true, });
@@ -47,7 +54,7 @@ const FormRegister = () => {
 
          toast.update(id, { render: `algo salio mal, porfavor intente denuevo`, type: "error", isLoading: false, autoClose:1700,pauseOnHover: false,closeOnClick: true });
        }
-
+         console.log(err);
       })
    
 

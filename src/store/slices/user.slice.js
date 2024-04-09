@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { axiosMusic } from "../../utils/configAxios";
 import { ToastContainer, toast } from 'react-toastify';
+import axios from "axios";
+
 
 const verifySessionStorage = (value) => {
      const objectUser = JSON.parse(sessionStorage.getItem('user'))
@@ -76,7 +78,7 @@ export const loginUserThunk = (data)=> (dispatch)=>{
 
 
 
-   axiosMusic.post('/users/login',data)
+   axios.post('https://api-music-backend.onrender.com/users/login',data)
    .then(({data})=>{
       console.log(data);
       toast.update(id, { render: `bienvenido ${data.name}`, type: "success", isLoading: false, autoClose:1700,pauseOnHover: false,closeOnClick: true, });
