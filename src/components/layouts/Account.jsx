@@ -39,13 +39,7 @@ const Options = ({modeAccount}) => {
     const dispatch = useDispatch()
     
 
-  const handleToLogin = ()=>{
-    navigate('/login')
-  }  
-  const handleToRegister = ()=>{
-    navigate('/register')
 
-  }
 
   const handleLogOut = ()=>{
     console.log('cerrando sesion');
@@ -58,8 +52,8 @@ const Options = ({modeAccount}) => {
 {
   token === '' ?
    <>
-   <div onClick={handleToLogin} className=' p-2 rounded-md hover:bg-teal-500  cursor-pointer text-2xl font-dongle'>LOGIN</div>
-   <div onClick={handleToRegister} className=' p-2 rounded-md hover:bg-zinc-500 cursor-pointer text-2xl font-dongle '>REGISTER</div>
+   <a  href='/login'  className=' p-2 rounded-md hover:bg-teal-500  cursor-pointer text-2xl font-dongle'>LOGIN</a>
+   <a href='/register' className=' p-2 rounded-md hover:bg-zinc-500 cursor-pointer text-2xl font-dongle '>REGISTER</a>
    </>
   : 
   <>

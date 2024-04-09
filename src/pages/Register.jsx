@@ -2,17 +2,13 @@ import React, { useEffect } from 'react'
 import { ButtonToHome } from '../components/Ui/Ux/Buttons'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
-import { axiosMusic, cancelTokenSource } from '../utils/configAxios'
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
 
 const Register = () => {
-  useEffect(()=>{
-    cancelTokenSource.cancel()
-
-  },[])
+ 
 
   return (
     <div className='bg-teal-950 min-h-screen justify-evenly  md:flex-row flex  items-center pt-12'>
@@ -36,6 +32,8 @@ const FormRegister = () => {
 
 
   const submitRegister = handleSubmit((data)=>{
+
+
      console.log(data);
      const id = toast.loading("Creando cuenta...")
 

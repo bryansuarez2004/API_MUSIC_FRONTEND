@@ -2,17 +2,14 @@ import React, { useEffect } from 'react'
 import { ButtonToHome } from '../components/Ui/Ux/Buttons'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
-import { axiosMusic, cancelTokenSource } from '../utils/configAxios'
 import { useDispatch } from 'react-redux'
 import { loginUserThunk } from '../store/slices/user.slice'
+import axios from "axios";
 
 
 const Login = () => {
 
-   useEffect(()=>{
-     cancelTokenSource.cancel('solicitud cancelada')
- 
-   },[])
+   
 
 
   return (
@@ -38,7 +35,6 @@ const FormLogin = () => {
 
   const submitLogin = handleSubmit((data)=>{
      console.log(data);
-       
      dispatch(loginUserThunk(data))
 
 
