@@ -1,123 +1,204 @@
-import React, { useEffect } from 'react'
-import './buttons.css'
-import { Link, useNavigate } from 'react-router-dom'
+import React, { useEffect } from "react";
+import "./buttons.css";
+import { Link, useNavigate } from "react-router-dom";
 import { PiHouseBold } from "react-icons/pi";
 import { BsHouseFill } from "react-icons/bs";
-import { axiosMusic } from '../../../utils/configAxios';
-import { useDispatch, useSelector } from 'react-redux'
-import { addFavoriteTrack, removeFavoriteTracks } from '../../../store/slices/user.slice';
-import { ToastContainer, toast } from 'react-toastify';
-import { removeCurrentTrack } from '../../../store/slices/playTrack.slice';
-
-
+import { axiosMusic } from "../../../utils/configAxios";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addFavoriteTrack,
+  addTrackToBackPack,
+  removeFavoriteTracks,
+} from "../../../store/slices/user.slice";
+import { ToastContainer, toast } from "react-toastify";
+import { removeCurrentTrack } from "../../../store/slices/playTrack.slice";
 
 const ListenIcon = () => {
   return (
     <div className="middle">
-  <div className="bar bar1"></div>
-  <div className="bar bar2"></div>
-  <div className="bar bar3"></div>
-  
-</div>
-  )
-}
+      <div className="bar bar1"></div>
+      <div className="bar bar2"></div>
+      <div className="bar bar3"></div>
+    </div>
+  );
+};
 
 const ButtonToHome = () => {
-    const navigate = useNavigate()
-    const dispatch = useDispatch()
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const handleToHome = ()=>{
-    navigate('/')
-   dispatch(removeCurrentTrack())
-  }
-
-
-  return (
-    <button onClick={handleToHome} className="animated-button absolute top-[20px] right-[20px] py-[4px]  ">
-  
-    <PiHouseBold  className="arr-2 text-xl" />
-    <span className="text">Inicio</span>
-    <span className="circle"></span>
-    
-    <BsHouseFill  className="arr-1 text-xl"/>
-  </button>
-  )
-}
-
-const ButtonLike =({isLiked,setIsLiked,track})=>{
-    const dispatch = useDispatch()
-    const  {token} = useSelector((store)=> store.user)
-
- //necesita un estado que verifica si esta en tru o false
- const handleFavoriteBtn =() =>{
-
-  if(token !== ''){
-    if(isLiked){
-     
-
-      //logica para quitar me gusta
-      const id = toast.loading("Quitando cancion de favoritos...")
-  
-        axiosMusic.delete(`/users/removeTracks/${track.id}`)
-        .then(({data})=>{ 
-          console.log(data)
-          toast.update(id, { render: `cancion quitada de favoritos`, type: "success", isLoading: false, autoClose:1700,pauseOnHover: false,closeOnClick: true, });
-          dispatch(removeFavoriteTracks(data.spotifyId))
-          setIsLiked(false)
-        })
-        .catch((err)=>console.log(err))
-         
-           
-     }else{
-      //logica para dara me gusta
-  
-      const id = toast.loading("Agregando cancion de favoritos...")
-  
-      axiosMusic.post(`/users/addTracks/${track.id}`)
-      .then(({data})=>{ 
-        toast.update(id, { render: `cancion agregada a favoritos`, type: "success", isLoading: false, autoClose:1700,pauseOnHover: false,closeOnClick: true, });
-        setIsLiked(true)
-        dispatch(addFavoriteTrack(data))
-        console.log(data)
-      })
-      .catch((err)=>console.log(err))
-     }  
-   
-  }else{
-    toast.warn("Debes hacer login para tener tu propia seccion de favoritos", {
-      autoClose: 1700,
-closeOnClick: true,
-pauseOnHover: false,
-    });
-  } 
-
-
-   
- }
+  const handleToHome = () => {
+    navigate("/");
+    dispatch(removeCurrentTrack());
+  };
 
   return (
-      <div className="heart-container w-[25px] " title="Like">
-        <input onChange={handleFavoriteBtn}  type="checkbox" checked={isLiked}  className="checkbox" id="Give-It-An-Id"/>
-            <div className="svg-container">
-                <svg viewBox="0 0 24 24" className="svg-outline" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
-                    </path>
-                </svg>
-                <svg viewBox="0 0 24 24" className="svg-filled" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
-                    </path>
-                </svg>
-                <svg className="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
-                    <polygon points="10,10 20,20"></polygon>
-                    <polygon points="10,50 20,50"></polygon>
-                    <polygon points="20,80 30,70"></polygon>
-                    <polygon points="90,10 80,20"></polygon>
-                    <polygon points="90,50 80,50"></polygon>
-                    <polygon points="80,80 70,70"></polygon>
-                </svg>
-            </div>
-        </div>
-  )
-}
+    <button
+      onClick={handleToHome}
+      className="animated-button absolute top-[20px] right-[20px] py-[4px]  "
+    >
+      <PiHouseBold className="arr-2 text-xl" />
+      <span className="text">Inicio</span>
+      <span className="circle"></span>
 
-export {ListenIcon,ButtonToHome,ButtonLike}
+      <BsHouseFill className="arr-1 text-xl" />
+    </button>
+  );
+};
+
+const ButtonLike = ({ isLiked, setIsLiked, track }) => {
+  const dispatch = useDispatch();
+  const { token } = useSelector((store) => store.user);
+
+  //necesita un estado que verifica si esta en tru o false
+  const handleFavoriteBtn = () => {
+    if (token !== "") {
+      if (isLiked) {
+        //logica para quitar me gusta
+        const id = toast.loading("Quitando cancion de favoritos...");
+
+        axiosMusic
+          .delete(`/users/removeTracks/${track.id}`)
+          .then(({ data }) => {
+            console.log(data);
+            toast.update(id, {
+              render: `cancion quitada de favoritos`,
+              type: "success",
+              isLoading: false,
+              autoClose: 1700,
+              pauseOnHover: false,
+              closeOnClick: true,
+            });
+            dispatch(removeFavoriteTracks(data.spotifyId));
+            setIsLiked(false);
+          })
+          .catch((err) => console.log(err));
+      } else {
+        //logica para dara me gusta
+
+        const id = toast.loading("Agregando cancion de favoritos...");
+
+        axiosMusic
+          .post(`/users/addTracks/${track.id}`)
+          .then(({ data }) => {
+            toast.update(id, {
+              render: `cancion agregada a favoritos`,
+              type: "success",
+              isLoading: false,
+              autoClose: 1700,
+              pauseOnHover: false,
+              closeOnClick: true,
+            });
+            setIsLiked(true);
+            dispatch(addFavoriteTrack(data));
+            console.log(data);
+          })
+          .catch((err) => console.log(err));
+      }
+    } else {
+      toast.warn(
+        "Debes hacer login para tener tu propia seccion de favoritos",
+        {
+          autoClose: 1700,
+          closeOnClick: true,
+          pauseOnHover: false,
+        }
+      );
+    }
+  };
+
+  return (
+    <div className="heart-container w-[25px] " title="Like">
+      <input
+        onChange={handleFavoriteBtn}
+        type="checkbox"
+        checked={isLiked}
+        className="checkbox"
+        id="Give-It-An-Id"
+      />
+      <div className="svg-container">
+        <svg
+          viewBox="0 0 24 24"
+          className="svg-outline"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z"></path>
+        </svg>
+        <svg
+          viewBox="0 0 24 24"
+          className="svg-filled"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z"></path>
+        </svg>
+        <svg
+          className="svg-celebrate"
+          width="100"
+          height="100"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <polygon points="10,10 20,20"></polygon>
+          <polygon points="10,50 20,50"></polygon>
+          <polygon points="20,80 30,70"></polygon>
+          <polygon points="90,10 80,20"></polygon>
+          <polygon points="90,50 80,50"></polygon>
+          <polygon points="80,80 70,70"></polygon>
+        </svg>
+      </div>
+    </div>
+  );
+};
+
+const ButtonAddToBackPack = ({ track }) => {
+  const dispatch = useDispatch();
+  const { backPack, token } = useSelector((store) => store.user);
+
+  const handleAddTrackToBackPack = () => {
+    if (token !== "") {
+      const isOn = backPack.some((trackInBackPack) => {
+        return trackInBackPack.id === track.id;
+      });
+
+      if (isOn) {
+        toast.warn("Esta Cancion ya se encuentra en tu mochila", {
+          autoClose: 1100,
+          closeOnClick: true,
+          pauseOnHover: false,
+        });
+      } else {
+        dispatch(addTrackToBackPack(track));
+      }
+    } else {
+      toast.warn("Debes hacer login, para agregar canciones", {
+        autoClose: 1600,
+        closeOnClick: true,
+        pauseOnHover: false,
+      });
+    }
+  };
+
+  return (
+    <button
+      title="Agregar"
+      className="group cursor-pointer outline-none hover:rotate-90 duration-300 "
+      onClick={handleAddTrackToBackPack}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="29px"
+        height="29px"
+        viewBox="0 0 24 24"
+        className="stroke-green-400 fill-none group-hover:fill-green-800 group-active:stroke-green-200 group-active:fill-green-600 group-active:duration-0 duration-300"
+      >
+        <path
+          d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
+          stroke-width="1.5"
+        ></path>
+        <path d="M8 12H16" stroke-width="1.5"></path>
+        <path d="M12 16V8" stroke-width="1.5"></path>
+      </svg>
+    </button>
+  );
+};
+
+export { ListenIcon, ButtonToHome, ButtonLike, ButtonAddToBackPack };

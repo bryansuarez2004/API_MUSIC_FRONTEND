@@ -1,7 +1,6 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 import Aside from './Aside'
-import Account from './Account'
 import { useDispatch, useSelector } from 'react-redux'
 import { onModePlay } from '../../store/slices/playTrack.slice'
 import ListenTracks from './ListenTracks'
@@ -21,7 +20,6 @@ const PrincipalStructure = () => {
     
     <Outlet />
 
-    <Account />
     </div>
     <ListenTracks />
 

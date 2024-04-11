@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { FaPlay } from "react-icons/fa";
 import { useDispatch, useSelector } from 'react-redux';
 import { onModePlay, setTrackInPlay } from '../../store/slices/playTrack.slice';
-import { ButtonLike, ListenIcon } from '../Ui/Ux/Buttons';
+import { ButtonAddToBackPack, ButtonLike, ListenIcon } from '../Ui/Ux/Buttons';
 import { Link, useNavigate } from 'react-router-dom';
 
-const TrackCard = ({track,functionOfArtist,btnLike}) => {
+const TrackCard = ({track,functionOfArtist,functionOfTracks,btnLike,btnBackPack}) => {
      const dispatch = useDispatch()
    const {isListen , trackInPlay,modePlay}  = useSelector((store)=> store.playTrack)
    const [hover, setHover] = useState(false)
@@ -47,6 +47,16 @@ const TrackCard = ({track,functionOfArtist,btnLike}) => {
       }
     }
 
+    const handleClickTrack = (idTrack) => {
+      console.log(idTrack);
+       navigate(`/track/${idTrack}`)
+
+       if(functionOfTracks){
+
+        functionOfTracks(idTrack)
+      }
+    }
+
 
   return (
     <article onMouseOver={()=>setHover(true)} onMouseOut={()=>setHover(false)} className={`${trackInPlay.id === track.id ? 'bg-white/10 ' : ''} flex  gap-2 font-rubick items-center text-white p-3 hover:bg-white/30 rounded-md h-[60px]`} >
@@ -61,7 +71,7 @@ const TrackCard = ({track,functionOfArtist,btnLike}) => {
               <img className='aspect-square   w-[50px] rounded-sm' src={track.album?.images[2].url} alt="" />
         </header>
         <div className='grow    '>
-            <Link to={`/track/${track.id}`} className={`${trackInPlay.id === track.id ? 'text-ligter ' : ''}   hover:underline `}>{track.name}</Link>
+            <button onClick={()=>handleClickTrack(track.id)} className={`${trackInPlay.id === track.id ? 'text-ligter ' : ''}   hover:underline `}>{track.name}</button>
             <div className='flex text-gray-400'>
                 {
                     track.artists?.slice(0,3).map((artist,index) => (
@@ -81,6 +91,9 @@ const TrackCard = ({track,functionOfArtist,btnLike}) => {
           {
             btnLike && <ButtonLike isLiked={isLiked} setIsLiked={setIsLiked} track={track} />
           }  
+          {
+            btnBackPack && <ButtonAddToBackPack track={track} />
+          }
         </div>
 
     </article>

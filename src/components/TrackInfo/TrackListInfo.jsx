@@ -5,6 +5,7 @@ import TrackCardInfo from './TrackCardInfo'
 
 const TrackListInfo = ({nameTrack,setTrackInfo,setIsLoading,isLoading}) => {
    const [Tracks, setTracks] = useState([])
+   
 
    console.log(nameTrack.artists[0].name);
 

@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { GrHomeRounded } from "react-icons/gr";
 import { IoLibraryOutline } from "react-icons/io5";
 import { AiOutlineHeart } from "react-icons/ai";
-import { BsBookmarkPlus } from "react-icons/bs";
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { offModePlay } from '../../store/slices/playTrack.slice';
 import { ToastContainer, toast } from 'react-toastify';
-
+import { TbBackpack } from "react-icons/tb";
+import BackPack from './BackPack';
 
 
    
@@ -17,24 +17,44 @@ import { ToastContainer, toast } from 'react-toastify';
 const Aside = () => {
     const dispatch = useDispatch()
     const [currentSection, setCurrentSection] = useState(1)
+    const [modeBackPack, setModeBackPack] = useState(false)
+    const {token}=  useSelector((store)=>store.user)
     
     useEffect(()=>{
         dispatch(offModePlay())
     },[currentSection])
 
 
+    const handleTracksForPlaylist = ()=> {
+     if(token !== ''){
+       setModeBackPack(!modeBackPack)
+
+     }else{
+      toast.warn("Debes hacer login para acceder a una mochila  ", {
+        autoClose: 1600,
+closeOnClick: true,
+pauseOnHover: false,
+      });
+     }
+
+    }
+
 
   return (
-    <div className='bg-primary md:p-3 fixed  bottom-0 w-full z-20 md:relative  md:h-screen'>
-      <div className='flex md:grid bg-secondary rounded-md'>
+    <div className='bg-primary md:p-3 fixed flex flex-col  bottom-0 w-full z-50 md:relative  md:h-screen'>
+      <div className='flex justify-evenly md:justify-normal md:grid bg-secondary rounded-md  relative z-20'>
      <ButtonAside nav={'/' }  page={1} setCurrentSection={setCurrentSection} text={'Home'} currentSection={currentSection} icon={<GrHomeRounded className='text-3xl'/>} />
      <ButtonAside nav={'/playlists' } setCurrentSection={setCurrentSection} currentSection={currentSection} page={2} text={'Playlists'} icon={<IoLibraryOutline className='text-3xl'/>} />
      <ButtonAside nav={'/favorites' } setCurrentSection={setCurrentSection} currentSection={currentSection}  page={3} text={'Favorites'} icon={<AiOutlineHeart className='text-3xl'/>} />
-   
+     <button onClick={handleTracksForPlaylist} className=' p-5 flex  items-center gap-3  rounded-md '>
+     <TbBackpack className='text-3xl text-zinc-400 hover:text-ligter '/>
+     <span className='hidden md:block pl-2  text-2xl pt-2 text-zinc-400 font-dongle'>{modeBackPack ? 'Cerrar mochila' : 'Abrir mochila'}</span> 
+     </button>
       </div>
-      <div>
+     
+     <BackPack modeBackPack={modeBackPack}/>
         
-      </div>
+    
     
     </div>
   )
@@ -61,7 +81,7 @@ export const ButtonAside = ({page,icon,text,nav,currentSection,setCurrentSection
        
       }else{
         toast.warn("Debes hacer login", {
-          autoClose: 1700,
+          autoClose: 1600,
   closeOnClick: true,
   pauseOnHover: false,
         });

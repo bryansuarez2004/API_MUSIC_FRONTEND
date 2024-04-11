@@ -4,6 +4,7 @@ import { getFavoritesTracksThunk } from '../store/slices/user.slice'
 import { ButtonLike } from '../components/Ui/Ux/Buttons'
 import TrackList from '../components/shared/TrackList'
 import HeaderFavorites from '../components/FavoritesPage/HeaderFavorites'
+import Account from '../components/layouts/Account'
 
 const Favorites = () => {
     const dispatch = useDispatch()
@@ -13,6 +14,7 @@ const Favorites = () => {
 
 
   return (
+    <>
     <div className='bg-primary md:p-3  md:pl-0  h-screen '>
 
     <div className='bg-secondary rounded-md h-[100%] overflow-auto'>
@@ -22,6 +24,11 @@ const Favorites = () => {
 
     </div>
     </div>
+
+    {
+      !favorites.isLoading  && <Account />
+    }
+    </>
   )
 }
 

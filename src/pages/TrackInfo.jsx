@@ -6,7 +6,8 @@ import { FaPlay } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { onModePlay, setTrackInPlay } from "../store/slices/playTrack.slice";
 import TrackListInfo from "../components/TrackInfo/TrackListInfo";
-import { EsqueletonTrack } from "../components/shared/TrackList";
+import TrackList, { EsqueletonTrack } from "../components/shared/TrackList";
+import Account from "../components/layouts/Account";
 
 const colors = {
     1 : "bg-sky-500",
@@ -29,6 +30,8 @@ const TrackInfo = () => {
     const [numero, setNumero] = useState(numeroAleatorio())
    const [isLoading, setIsLoading] = useState(false)
 
+    const [TracksRecomendations, setTracksRecomendations] = useState([])
+    const [isLoadingTracks, setIsLoadingTracks] = useState(false)
     
     console.log('nuevo render');
     useEffect(() => {
@@ -36,20 +39,49 @@ const TrackInfo = () => {
 
         axiosMusic
         .get(`tracks/${id}`)
-      .then(({ data }) => {setTrackInfo(data)
-      setIsLoading(false)})
+      .then(({ data }) => {
+        setTrackInfo(data)
+        setIsLoading(false)
+        getTracksOfTrack(data.artists[0].name)
+    })
       .catch((err) => console.log(err));
   }, []);
+
+   
 
   const handleOpenMusic = ()=>{
     dispatch(onModePlay())
      dispatch(setTrackInPlay(TrackInfo))
      //aqui falta poner los datos al estado de reproduccion de musica
-}
+} 
 
+  const getTracksOfTrack =(name) =>{
+    setIsLoadingTracks(true)
 
+    axiosMusic.post('/tracks/search',{name:`${name}`,limit:"15"})
+    .then(({ data }) => {
+      setTracksRecomendations(data.tracks.items)
+       setIsLoadingTracks(false)
+      
+    })
+     .catch((err) => console.log(err));
+  }
+
+  
+  const functionOfTracks = (idTrack)=>{
+    setIsLoadingTracks(true);
+
+    axiosMusic(`/tracks/${idTrack}`)
+      .then(({ data }) => {
+        console.log(data);
+        setTrackInfo(data);
+        setIsLoadingTracks(false);
+      })
+      .catch((err) => console.log(err));
+  }
 
   return (
+    <>
     <div className="bg-primary md:p-3  md:pl-0  h-screen ">
       <div className="bg-secondary rounded-md h-[100%] overflow-auto">
         <section className= {`${colors[numero]} pt-[50px] flex flex-col md:flex-row md:items-end items-center gap-5 p-7  min-h-[250px]`}>
@@ -67,8 +99,8 @@ const TrackInfo = () => {
                             {TrackInfo.artists.slice(0,3).length - 1  !== index && <span>,  </span> }
                          </Link>
                          
-                         )) 
-                }
+                        )) 
+                      }
             </div >
           </div>
           
@@ -86,15 +118,9 @@ const TrackInfo = () => {
           <div className="min-h-[500px]">
           <div className='text-2xl font-rubick font-bold text-white pl-5'>Recomendaciones</div>
         <p className='font-rubick text-gray-400 pl-5'>basadas en el autor</p>
-        <div className="rounded-md p-3 max-w-[90%]  md:max-w-[700px] mx-auto grid gap-2 ">
-          {
-              isLoading && [1,2,3,4,5,6,7,8,9,10].map((num)=>{
-                return <EsqueletonTrack key={num} />
-              })
-            }
-        </div>
+        
            
-            { TrackInfo.name && <TrackListInfo isLoading={isLoading} setIsLoading={setIsLoading} setTrackInfo={setTrackInfo} nameTrack={TrackInfo} />}
+            { TrackInfo.name && <TrackList tracks={TracksRecomendations} isLoading={isLoadingTracks} functionOfTracks={functionOfTracks} btnLike /> }
             {/* aqui van las canciones */}
           </div>
 
@@ -103,6 +129,11 @@ const TrackInfo = () => {
 
       </div>
     </div>
+
+    {
+      !isLoading  && <Account />
+    }
+            </>
   );
 };
 

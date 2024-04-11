@@ -4,6 +4,7 @@ import { getMainTracksThunk } from '../store/slices/tracksHome.slice'
 import Search from '../components/HomePage/Search'
 import TrackList from '../components/shared/TrackList'
 import ArtistSlider from '../components/HomePage/ArtistSlider'
+import Account from '../components/layouts/Account'
 
 const Home = () => {
     const dispatch = useDispatch()
@@ -26,6 +27,8 @@ const Home = () => {
     },[])
 
   return (
+    <>
+    
     <div className='bg-primary md:p-3  md:pl-0  h-screen '>
 
     <div className='bg-secondary rounded-md h-[100%] overflow-auto'>
@@ -34,12 +37,18 @@ const Home = () => {
 
     <Search />
     <div className='font-rubick text-2xl font-bold pl-6 text-white'>Canciones</div>
-   <TrackList tracks={tracks} isLoading={isLoading} btnLike />
+   <TrackList tracks={tracks} isLoading={isLoading} btnLike btnBackPack />
 
      
 
     </div>
     </div>
+
+    {
+      !isLoading && <Account />
+    }
+       
+    </>
   )
 }
 

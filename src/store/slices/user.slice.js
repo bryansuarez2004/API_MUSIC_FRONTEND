@@ -29,7 +29,8 @@ const user = createSlice({
         playlists:{
             data:[],
             isLoading:false
-        }
+        },
+        backPack: []
         
 
     },
@@ -44,6 +45,7 @@ const user = createSlice({
         state.email = ''
         state.token = ''
         state.favorites.tracks = []
+        state.backPack = []
        },
        setFavoriteTracks : (state,action)=>{
          state.favorites.tracks = action.payload
@@ -63,11 +65,14 @@ const user = createSlice({
               return track.id !== idTrackToDelete
          })
          state.favorites.tracks = newFavoriteTracks
+       },
+       addTrackToBackPack : (state,action)=>{
+     state.backPack.push(action.payload)
        }
     }
 })
 
-export const {setLoginUsers,logOutSesion,isLoginOff,isLoginOn,setFavoriteTracks,addFavoriteTrack,removeFavoriteTracks}=user.actions
+export const {setLoginUsers,addTrackToBackPack,logOutSesion,isLoginOff,isLoginOn,setFavoriteTracks,addFavoriteTrack,removeFavoriteTracks}=user.actions
 
 export default user.reducer
 

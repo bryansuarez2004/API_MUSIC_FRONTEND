@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { FaUserCircle } from "react-icons/fa";
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { logOutSesion } from '../../store/slices/user.slice';
 
 const Account = () => {
@@ -52,8 +52,8 @@ const Options = ({modeAccount}) => {
 {
   token === '' ?
    <>
-   <a  href='/login'  className=' p-2 rounded-md hover:bg-teal-500  cursor-pointer text-2xl font-dongle'>LOGIN</a>
-   <a href='/register' className=' p-2 rounded-md hover:bg-zinc-500 cursor-pointer text-2xl font-dongle '>REGISTER</a>
+   <Link to={'/login'}  className=' p-2 rounded-md hover:bg-teal-500  cursor-pointer text-2xl font-dongle'>LOGIN</Link>
+   <Link to={'/register'}  className=' p-2 rounded-md hover:bg-zinc-500 cursor-pointer text-2xl font-dongle '>REGISTER</Link>
    </>
   : 
   <>

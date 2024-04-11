@@ -4,6 +4,7 @@ import { axiosMusic } from "../utils/configAxios";
 import { useParams } from "react-router-dom";
 import Albums from "../components/ArtistPage/Albums";
 import TrackList from "../components/shared/TrackList";
+import Account from "../components/layouts/Account";
 
 const Artists = () => {
   const [ArtistInCurrentPage, setArtistInCurrentPage] = useState({});
@@ -34,19 +35,22 @@ const Artists = () => {
   }
 
   return (
+
+    <>
+    
     <div className="bg-primary md:p-3  md:pl-0  h-screen ">
       <div className="bg-secondary rounded-md h-[100%] w-full overflow-auto">
         {
           isLoading ? <div className="h-[260px] bg-secondary animate-pulse"></div>
- : (<HeaderArtist
-  ArtistInCurrentPage={ArtistInCurrentPage}
-  isLoading={isLoading}
+          : (<HeaderArtist
+            ArtistInCurrentPage={ArtistInCurrentPage}
+            isLoading={isLoading}
 />)        }
         <div
           style={{
             background: `linear-gradient(180deg, rgba(216,230,243,0.2) 0%, rgba(253,45,45,0) 60%)`,
           }}
-        >
+          >
           <Albums ArtistInCurrentPage={ArtistInCurrentPage} isLoading={isLoading} />
 
           {
@@ -67,10 +71,16 @@ const Artists = () => {
             isLoading={isLoading}
             functionOfArtist={functionOfArtist}
             btnLike
-          />
+            />
         </div>
       </div>
     </div>
+
+    {
+      
+      !isLoading  &&  <Account />
+    }
+            </>
   );
 };
 
