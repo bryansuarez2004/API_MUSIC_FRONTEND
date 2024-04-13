@@ -71,8 +71,11 @@ const TrackCard = ({track,functionOfArtist,functionOfTracks,btnLike,btnBackPack}
               <img className='aspect-square   w-[50px] rounded-sm' src={track.album?.images[2].url} alt="" />
         </header>
         <div className='grow    '>
-            <button onClick={()=>handleClickTrack(track.id)} className={`${trackInPlay.id === track.id ? 'text-ligter ' : ''}   hover:underline `}>{track.name}</button>
-            <div className='flex text-gray-400'>
+          <div className='line-clamp-1'>
+
+            <div onClick={()=>handleClickTrack(track.id)} className={`${trackInPlay.id === track.id ? 'text-ligter ' : ''} cursor-pointer   hover:underline  `}>{track.name}</div>
+          </div>
+            <div className=' text-gray-400 line-clamp-1'>
                 {
                     track.artists?.slice(0,3).map((artist,index) => (
                          <button onClick={()=>handleClickArtist(artist.id)} key={artist.id}  className=' text-sm hover:underline'>
