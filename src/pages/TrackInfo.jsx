@@ -5,7 +5,6 @@ import { numeroAleatorio } from "../utils/getRandomNum";
 import { FaPlay } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { onModePlay, setTrackInPlay } from "../store/slices/playTrack.slice";
-import TrackListInfo from "../components/TrackInfo/TrackListInfo";
 import TrackList, { EsqueletonTrack } from "../components/shared/TrackList";
 import Account from "../components/layouts/Account";
 
