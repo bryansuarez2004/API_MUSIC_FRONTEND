@@ -203,9 +203,9 @@ const ButtonAddToBackPack = ({ track }) => {
 
 
 
- const ButtonTrash = ({functionToDelete}) => {
+ const ButtonTrash = ({functionToDelete,id ,stiles}) => {
   return (
-    <div onClick={()=>functionToDelete()} className="bin-button">
+    <div onClick={()=>functionToDelete(id)} className={`bin-button ${stiles}`}>
   <svg
     className="bin-top"
     viewBox="0 0 39 7"
@@ -246,4 +246,18 @@ const ButtonAddToBackPack = ({ track }) => {
 }
 
 
-export { ListenIcon, ButtonToHome, ButtonLike, ButtonAddToBackPack,ButtonTrash };
+
+
+ const ButtonLink = ({text,functionOnClick}) => {
+  return (
+    <button className="Btn">
+  
+  <p className="text">{text}</p>
+  <span className="effect"></span>
+</button>
+  )
+}
+
+
+
+export { ListenIcon, ButtonToHome, ButtonLike, ButtonAddToBackPack,ButtonTrash,ButtonLink };

@@ -2,23 +2,26 @@ import React from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { FaTrashCan } from "react-icons/fa6";
 import { ButtonTrash } from '../Ui/Ux/Buttons';
+import { removeTrackInBackPack } from '../../store/slices/user.slice';
 
 
 const ListOfTracksBP = () => {
     const {backPack} = useSelector((store)=>store.user)
-   
+     const dispatch = useDispatch()
 
-    const handleDelete = ()=>{
+    const handleDelete = (id)=>{
+      dispatch(removeTrackInBackPack(id))
+
         console.log('eliminando');
     }
 
   return (
-    <div className='grid p-1 gap-1'>
+    <div className='grid  p-1 gap-1'>
         {
             backPack.map((track)=>{
-                return  <div key={track.id} className='flex gap-1 p-1 rounded-md text-xs  items-center bg-tertiary '>
+                return  <div key={track.id} className=' flex gap-1 p-1 rounded-md text-xs  items-center bg-tertiary '>
                   <img src={track.album?.images[2].url} alt=""  className='aspect-square w-[30px] md:w-[45px]'/>
-                  <div className='grow'>
+                  <div className='grow overflow-auto'>
                   <div className='line-clamp-1 text-white font-rubick '>
                     {track.name}
                   </div>
@@ -37,7 +40,7 @@ const ListOfTracksBP = () => {
                   </div>
                   <div>
 
-                  <ButtonTrash functionToDelete={handleDelete} />
+                  <ButtonTrash functionToDelete={handleDelete} id={track.id} />
                   </div>
                   
                   

@@ -14,6 +14,7 @@ import PrivateRoutes from './components/Auth/PrivateRoutes'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getFavoritesTracksThunk } from './store/slices/user.slice'
+import PlaylistInfo from './pages/PlaylistInfo'
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
           <Route path="/track/:id" element={<TrackInfo />} />
           <Route element={<PrivateRoutes/>}>
           <Route path="/playlists" element={<Playlists />} />
+          <Route path="/playlists/:id" element={<PlaylistInfo />} />
           <Route path="/favorites" element={<Favorites />} />
           </Route>
         </Route>

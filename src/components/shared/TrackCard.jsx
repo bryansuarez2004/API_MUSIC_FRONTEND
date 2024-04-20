@@ -60,7 +60,7 @@ const TrackCard = ({track,functionOfArtist,functionOfTracks,btnLike,btnBackPack}
 
   return (
     <article onMouseOver={()=>setHover(true)} onMouseOut={()=>setHover(false)} className={`${trackInPlay.id === track.id ? 'bg-white/10 ' : ''} flex  gap-2 font-rubick items-center text-white p-3 hover:bg-white/30 rounded-md h-[60px]`} >
-        <header  className='relative'>
+        <header  className='relative  shrink-0'>
             {
             hover   && (<div className='aspect-square w-[50px] bg-primary/50 absolute flex justify-center items-center'>
           <FaPlay onClick={handleOpenMusic} className={`${(trackInPlay.id === track.id && modePlay) ? 'hidden' : ' block'} text-xl hover:text-2xl transition-all cursor-pointer  `} />
@@ -70,7 +70,7 @@ const TrackCard = ({track,functionOfArtist,functionOfTracks,btnLike,btnBackPack}
             
               <img className='aspect-square   w-[50px] rounded-sm' src={track.album?.images[2].url} alt="" />
         </header>
-        <div className='grow    '>
+        <div className='grow   '>
           <div className='line-clamp-1'>
 
             <div onClick={()=>handleClickTrack(track.id)} className={`${trackInPlay.id === track.id ? 'text-ligter ' : ''} cursor-pointer   hover:underline  `}>{track.name}</div>

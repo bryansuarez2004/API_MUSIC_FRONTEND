@@ -3,12 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import ListOfTracksBP from '../BackPack/ListOfTracksBP';
 import { useForm } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
+import { createPlaylistThunk } from '../../store/slices/user.slice';
 
 
 
 const BackPack = ({modeBackPack}) => {
    const {backPack} = useSelector((store)=>store.user)
    const {register,handleSubmit} = useForm()
+   const dispatch = useDispatch()
 
 
 
@@ -25,8 +27,7 @@ const BackPack = ({modeBackPack}) => {
        data.tracks = tracks
 
 
-
-          console.log(data);
+         dispatch(createPlaylistThunk(data))
    })
 
 

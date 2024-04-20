@@ -68,11 +68,32 @@ const user = createSlice({
        },
        addTrackToBackPack : (state,action)=>{
      state.backPack.push(action.payload)
+       },
+       removeTrackInBackPack : (state,action)=>{
+        const idToDelete = action.payload
+        const newBackPack =  state.backPack.filter((track)=>{
+                      return track.id !== idToDelete
+         })
+       state.backPack = newBackPack
+       },
+       setPlaylists : (state,action)=>{
+            state.playlists.data = action.payload
+       },
+       removePlaylist : (state,action)=>{
+        const idPlaylistToDelete = action.payload
+          const newPlaylists =   state.playlists.data.filter((playlist)=>{
+               return  playlist.id !== idPlaylistToDelete
+            })
+
+            state.playlists.data = newPlaylists
+       },
+       addPlaylist : (state,action)=>{
+        state.playlists.data.push(action.payload)
        }
     }
 })
 
-export const {setLoginUsers,addTrackToBackPack,logOutSesion,isLoginOff,isLoginOn,setFavoriteTracks,addFavoriteTrack,removeFavoriteTracks}=user.actions
+export const {setLoginUsers,removeTrackInBackPack,addPlaylist,removePlaylist,setPlaylists,addTrackToBackPack,logOutSesion,isLoginOff,isLoginOn,setFavoriteTracks,addFavoriteTrack,removeFavoriteTracks}=user.actions
 
 export default user.reducer
 
@@ -116,4 +137,42 @@ export const getFavoritesTracksThunk = () => (dispatch)=>{
          dispatch(isLoginOff('favorites'))
         console.log(data)})
     .catch((err)=>console.log(err))
+}
+
+export const getPlaylistsThunk = () => (dispatch) =>{
+
+    axiosMusic.get('/playlists')
+    .then(({data})=>{
+      dispatch(setPlaylists(data))
+      console.log(data)})
+    .catch((err)=>console.log(err))
+}
+
+
+export const createPlaylistThunk = (object,numberOfTracks)=>(dispatch) =>{
+
+  const id = toast.loading("Creando Playlist...")
+
+  
+   axiosMusic.post('/playlists/create',object)
+   .then(({data})=>{
+    toast.update(id, { render: `Playlist creada correctamente`, type: "success", isLoading: false, autoClose:1500,pauseOnHover: false,closeOnClick: true, });
+      
+    dispatch(addPlaylist({...data,tracks:new Array(numberOfTracks)}))
+    console.log(data)})
+   .catch((err)=>console.log(err))
+
+}
+
+export const deletePlaylistThunk = (id) => (dispatch) =>{
+
+  const ide = toast.loading("Eliminando Playlist...")
+     
+
+    axiosMusic.delete(`/playlists/${id}/remove`)
+    .then(({data})=>{
+      toast.update(ide, { render: `Playlist eliminada correctamente`, type: "success", isLoading: false, autoClose:1500,pauseOnHover: false,closeOnClick: true, });
+       dispatch(removePlaylist(id))
+      console.log(data)})
+     .catch((err)=>console.log(err))
 }
