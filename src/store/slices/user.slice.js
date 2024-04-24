@@ -164,7 +164,7 @@ export const createPlaylistThunk = (object,numberOfTracks)=>(dispatch) =>{
 
 }
 
-export const deletePlaylistThunk = (id) => (dispatch) =>{
+export const deletePlaylistThunk = (id,navigate) => (dispatch) =>{
 
   const ide = toast.loading("Eliminando Playlist...")
      
@@ -173,6 +173,9 @@ export const deletePlaylistThunk = (id) => (dispatch) =>{
     .then(({data})=>{
       toast.update(ide, { render: `Playlist eliminada correctamente`, type: "success", isLoading: false, autoClose:1500,pauseOnHover: false,closeOnClick: true, });
        dispatch(removePlaylist(id))
-      console.log(data)})
+       navigate('/playlists')
+      console.log(data)
+       
+    })
      .catch((err)=>console.log(err))
 }

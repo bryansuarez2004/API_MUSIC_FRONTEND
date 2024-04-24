@@ -12,6 +12,7 @@ import {
 } from "../../../store/slices/user.slice";
 import { ToastContainer, toast } from "react-toastify";
 import { removeCurrentTrack } from "../../../store/slices/playTrack.slice";
+import { changePage } from "../../../store/slices/page.slice";
 
 const ListenIcon = () => {
   return (
@@ -30,6 +31,7 @@ const ButtonToHome = () => {
   const handleToHome = () => {
     navigate("/");
     dispatch(removeCurrentTrack());
+    dispatch(changePage(1))
   };
 
   return (
@@ -205,7 +207,7 @@ const ButtonAddToBackPack = ({ track }) => {
 
  const ButtonTrash = ({functionToDelete,id ,stiles}) => {
   return (
-    <div onClick={()=>functionToDelete(id)} className={`bin-button ${stiles}`}>
+    <div onClick={(e)=>functionToDelete(id,e)} className={`bin-button ${stiles}`}>
   <svg
     className="bin-top"
     viewBox="0 0 39 7"
@@ -240,6 +242,7 @@ const ButtonAddToBackPack = ({ track }) => {
     ></path>
     <path d="M12 6L12 29" stroke="white" stroke-width="4"></path>
     <path d="M21 6V29" stroke="white" stroke-width="4"></path>
+    
   </svg>
 </div>
   )

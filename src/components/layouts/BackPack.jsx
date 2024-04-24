@@ -27,7 +27,7 @@ const BackPack = ({modeBackPack}) => {
        data.tracks = tracks
 
 
-         dispatch(createPlaylistThunk(data))
+         dispatch(createPlaylistThunk(data,tracks.length))
    })
 
 

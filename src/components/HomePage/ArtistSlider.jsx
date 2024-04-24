@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import 'swiper/css';
 import { useNavigate } from 'react-router-dom';
+import { changePage } from '../../store/slices/page.slice';
 
 
 
@@ -94,6 +95,7 @@ const ArtistSlider = () => {
 
   const handleToArtist = (id)=>{
     navigate(`/artist/${id}`)
+    dispatch(changePage(0))
   }
 
 

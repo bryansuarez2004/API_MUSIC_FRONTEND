@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { onModePlay, setTrackInPlay } from '../../store/slices/playTrack.slice';
 import { ButtonAddToBackPack, ButtonLike, ListenIcon } from '../Ui/Ux/Buttons';
 import { Link, useNavigate } from 'react-router-dom';
+import { changePage } from '../../store/slices/page.slice';
 
 const TrackCard = ({track,functionOfArtist,functionOfTracks,btnLike,btnBackPack}) => {
      const dispatch = useDispatch()
@@ -40,16 +41,17 @@ const TrackCard = ({track,functionOfArtist,functionOfTracks,btnLike,btnBackPack}
 
     const handleClickArtist = (id) =>{
       navigate(`/artist/${id}`)
-
+      dispatch(changePage(0))
       if(functionOfArtist){
-
+   
         functionOfArtist(id)
       }
     }
 
     const handleClickTrack = (idTrack) => {
-      console.log(idTrack);
        navigate(`/track/${idTrack}`)
+      dispatch(changePage(0))
+
 
        if(functionOfTracks){
 

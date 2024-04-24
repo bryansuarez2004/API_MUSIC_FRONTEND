@@ -12,7 +12,7 @@ const PlaylistInfo = () => {
 
    useEffect(()=>{
    setIsLoading(true)
-
+   
      axiosMusic.get(`/playlists/${id}/tracks`)
      .then(({data})=>{
         setIsLoading(false)
@@ -28,10 +28,12 @@ const PlaylistInfo = () => {
     <div className='bg-primary md:p-3  md:pl-0  h-screen '>
 
     <div className='bg-secondary rounded-md h-[100%] overflow-auto'>
-     <HeaderPlaylistInfo playlist={currentPlaylist}  isLoading={isLoading}/>
+     <HeaderPlaylistInfo playlist={currentPlaylist}  setCurrentPlaylist={setCurrentPlaylist} isLoading={isLoading}/>
      <div  style={{
-            background: `linear-gradient(180deg, rgba(52, 211, 153,0.5) 0%, rgba(253,45,45,0) 70%)`,
-          }} >
+            background: `${!isLoading ? 'linear-gradient(180deg, rgba(52, 211, 153,0.5) 0%, rgba(253,45,45,0) 70%)' : ''} `,
+          }}>
+
+
 
      {
        !isLoading &&  <h2 className='font-rubick text-2xl text-white tracking-wider p-5 font-bold'> Tus Canciones:</h2>

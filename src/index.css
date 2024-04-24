@@ -20,8 +20,7 @@
 
 /* estilos de card */
 .card {
-    padding: 10px;
-    background: #07182E;
+    padding: 5px;
     position: relative;
     display: flex;
     place-content: center;
@@ -32,7 +31,6 @@
   
   .card h2 {
     z-index: 1;
-    color: white;
     font-size: 2em;
   }
   
@@ -59,8 +57,6 @@
   .card::after {
     content: '';
     position: absolute;
-    background: #07182E;
-    ;
     inset: 5px;
     border-radius: 15px;
   }  

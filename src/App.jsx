@@ -15,6 +15,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getFavoritesTracksThunk } from './store/slices/user.slice'
 import PlaylistInfo from './pages/PlaylistInfo'
+import SharedPlaylist from './pages/SharedPlaylist'
 
 
 function App() {
@@ -39,12 +40,14 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/artist/:id" element={<Artists />} />
           <Route path="/track/:id" element={<TrackInfo />} />
+        <Route path="/sharedPlaylist/:id" element={<SharedPlaylist />}/>
           <Route element={<PrivateRoutes/>}>
           <Route path="/playlists" element={<Playlists />} />
           <Route path="/playlists/:id" element={<PlaylistInfo />} />
           <Route path="/favorites" element={<Favorites />} />
           </Route>
         </Route>
+        
         <Route path="/login" element={<Login />}/>
         <Route path="/register" element={<Register />}/>
 
