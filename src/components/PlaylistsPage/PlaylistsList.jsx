@@ -3,7 +3,7 @@ import PlaylistCard from './PlaylistCard'
 
 const PlaylistsList = ({playlists}) => {
   return (
-    <div className='  p-3 grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-3'>
+    <div className='  p-3 grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-3 '>
 
     {
     playlists.map((playlist)=>{

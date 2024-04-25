@@ -36,18 +36,21 @@ const PlaylistCard = ({playlist}) => {
    }
 
 
-   const afterStyle = {
    
-    backgroundColor: 'red',
-  };
 
   return (
     <div onClick={handleClickPlaylist} className={`card `}>
-        <div className={`z-10 w-full h-full ${colors[number]} p-3 rounded-md`}>
-        <h2>{playlist.name}</h2>
-       <p>{playlist.shared ? ' playlists compartida ' : 'playlist no compartida'} </p>
-       <p>{playlist.tracks.length}</p>   
-       <ButtonTrash functionToDelete={handleRemovePlaylist} id={playlist.id} stiles={''} />
+        <div className={`z-10 w-full flex  h-full ${colors[number]}  p-4 rounded-2xl cursor-pointer`}>
+          <div className={'grow'}>
+
+        <div className={' font-rubick font-semibold text-4xl  '} >{playlist.name}</div>
+       <p className={'font-rubick text-xs    '} >{playlist.shared ? ' playlists compartida ' : 'playlist no compartida'} </p>
+       <p className={'font-rubick text-xs    '}>{playlist.tracks.length} canciones</p>   
+          </div>
+          <div className={'grid gap-3'}>
+
+       <ButtonTrash functionToDelete={handleRemovePlaylist} id={playlist.id} stiles={'scale-[1.4]'} />
+          </div>
         </div>
        
     </div>

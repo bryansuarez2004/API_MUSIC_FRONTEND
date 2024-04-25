@@ -18,19 +18,20 @@ const Search = () => {
 
   return (
     <form className="flex  gap-4 p-2" onSubmit={onSubmit}>
-      <div className="flex  items-center  gap-2 p-2 py-3 rounded-full bg-tertiary mx-auto mb-6  w-full max-w-[80%] md:max-w-[60%]">
-        <CgSearch className="text-2xl text-white" />
+      <div className="flex  items-center  gap-2 p-2 py-3 border-2 border-transparent   rounded-full bg-tertiary mx-auto mb-6  w-full max-w-[80%] md:max-w-[60%]">
+        <CgSearch className="text-2xl text-ligter" />
         <input
           placeholder="¿Que deseas escuchar?"
           type="text"
+           autoComplete="off"
           {...register("name")}
-          className=" tracking-wider line-clamp-1 font-dongle text-lg md:text-xl  grow bg-transparent outline-none text-white"
+          className="  tracking-wider line-clamp-1 font-dongle text-lg md:text-xl  grow bg-transparent outline-none text-white"
         />
         <select
           name=""
           id=""
           {...register("limit")}
-          className="bg-transparent text-white *:bg-secondary outline-none font-dongle text-2xl"
+          className="bg-transparent cursor-pointer text-ligter *:bg-secondary outline-none font-dongle text-2xl"
         >
           <option value="10">10</option>
           <option value="15">15</option>

@@ -71,6 +71,7 @@ const Artists = () => {
             isLoading={isLoading}
             functionOfArtist={functionOfArtist}
             btnLike
+            btnBackPack
             />
         </div>
       </div>

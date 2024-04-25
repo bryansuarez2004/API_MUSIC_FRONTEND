@@ -19,7 +19,7 @@ const ListenTracks = () => {
     <div className={`${modePlay ? 'translate-x-0 ' : 'translate-x-[100%]' } p-3 md:pl-0  fixed md:w-[30vw] z-30  top-0 right-0 w-screen h-screen transition-all  duration-500 bg-primary  text-white overflow-auto`}>
       <div className='bg-secondary p-2 rounded-md  '>
 
-       <h2 className='font-rubick pb-2'>{trackInPlay.name}</h2>
+       <h2 className='font-rubick pb-2 text-ligter'>{trackInPlay.name}</h2>
     
 
       <div className='w-full aspect-square rounded-md overflow-hidden flex justify-center items-center'>
@@ -28,8 +28,8 @@ const ListenTracks = () => {
       <Velustro />
       </div>
 
-      <h2 className='text-2xl font-bold  pt-3'>{trackInPlay.name}</h2>
-      <div className='flex '>
+      <h2 className='text-2xl font-bold   pt-3'>{trackInPlay.name}</h2>
+      <div className='flex text-ligter '>
                 {
                     trackInPlay.artists?.slice(0,3).map((artist,index) => (
                          <div key={artist.id}  className=' text-sm'>

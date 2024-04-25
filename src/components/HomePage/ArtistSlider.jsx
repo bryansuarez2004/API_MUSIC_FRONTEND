@@ -123,7 +123,7 @@ const ArtistSlider = () => {
            [1,2,3,4,5,6,7,8,9,10].map((element)=>{
             return (
             <SwiperSlide key={element}>
-                 <article className='max-w-[160px]'>
+                 <article className='max-w-[160px]  '>
                     <div className='aspect-square w-full p-2 bg-tertiary/30 rounded-md  animate-pulse '>
                       <div className='aspect-square w-[90%] bg-secondary rounded-md animate-pulse mb-2 mx-auto'>
 
@@ -155,9 +155,9 @@ const ArtistSlider = () => {
        artists.map((artist)=>{
         return (
         <SwiperSlide key={artist.id}>
-             <article className='max-w-[160px]'>
-                <img onClick={()=>handleToArtist(artist.id)} className='active:cursor-grabbing transition-all duration-500 hover:scale-105 rounded-md cursor-pointer  w-full aspect-square' src={artist.images[1].url} alt="" />
-                <h5 className=' text-sm font-rubick line-clamp-1 pt-2 font-medium text-white'>{artist.name}</h5>
+             <article className='max-w-[160px] group'>
+                <img onClick={()=>handleToArtist(artist.id)} className=' active:cursor-grabbing transition-all duration-500 hover:scale-105 rounded-md cursor-pointer  w-full aspect-square' src={artist.images[1].url} alt="" />
+                <h5 className=' text-sm font-rubick line-clamp-1 pt-2 font-medium group-hover:text-ligter text-white'>{artist.name}</h5>
              </article>
        </SwiperSlide>
 

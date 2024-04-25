@@ -62,8 +62,8 @@
     background-color: inherit;
     border-radius: 100px;
     font-weight: 600;
-    color: greenyellow;
-    box-shadow: 0 0 0 2px greenyellow;
+    color: #22d3ee;
+    box-shadow: 0 0 0 2px #22d3ee;
     cursor: pointer;
     overflow: hidden;
     transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
@@ -72,11 +72,14 @@
   .animated-button svg {
     position: absolute;
     width: 24px;
-    fill: greenyellow;
+    fill: #22d3ee;
     z-index: 9;
     transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
   }
   
+  .animated-button:hover .text{
+    color:black
+  }
   .animated-button .arr-1 {
     right: 16px;
   }
@@ -92,7 +95,7 @@
     transform: translate(-50%, -50%);
     width: 20px;
     height: 20px;
-    background-color: greenyellow;
+    background-color: #22d3ee;
     border-radius: 50%;
     opacity: 0;
     transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
@@ -107,7 +110,7 @@
   
   .animated-button:hover {
     box-shadow: 0 0 0 12px transparent;
-    color: #212121;
+    color: #22d3ee;
     border-radius: 12px;
   }
   
@@ -124,12 +127,12 @@
   }
   
   .animated-button:hover svg {
-    fill: #212121;
+    fill: black;
   }
   
   .animated-button:active {
     scale: 0.95;
-    box-shadow: 0 0 0 4px greenyellow;
+    box-shadow: 0 0 0 4px #22d3ee;
   }
   
   .animated-button:hover .circle {
@@ -137,12 +140,15 @@
     height: 220px;
     opacity: 1;
   }
-
+  .text{
+    color:#22d3ee;
+  }
+  
 
   /* estilos del boton de like */
 
   .heart-container {
-    --heart-color: rgb(255, 91, 137);
+    --heart-color: #22d3ee;
     position: relative;
     width: 20px;
     height: 20px;
@@ -280,7 +286,7 @@
     transition-duration: .5s;
   }
   
-  .text {
+  .textLink {
     color: rgb(184, 236, 104);
     font-weight: 800;
     letter-spacing: 1.1px;

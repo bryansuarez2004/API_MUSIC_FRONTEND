@@ -39,11 +39,11 @@ const ButtonToHome = () => {
       onClick={handleToHome}
       className="animated-button absolute top-[20px] right-[20px] py-[4px]  "
     >
-      <PiHouseBold className="arr-2 text-xl" />
-      <span className="text">Inicio</span>
+      <PiHouseBold className="arr-2 text-xl " />
+      <span className="text font-rubick tracking-wider">Inicio</span>
       <span className="circle"></span>
 
-      <BsHouseFill className="arr-1 text-xl" />
+      <BsHouseFill className="arr-1 text-xl " />
     </button>
   );
 };
@@ -110,7 +110,7 @@ const ButtonLike = ({ isLiked, setIsLiked, track }) => {
   };
 
   return (
-    <div className="heart-container w-[25px] " title="Like">
+    <div className="heart-container w-[25px]  hover:animate-bounce transition-all duration-500 " title="Agregar a favoritos">
       <input
         onChange={handleFavoriteBtn}
         type="checkbox"
@@ -190,7 +190,7 @@ const ButtonAddToBackPack = ({ track }) => {
         width="29px"
         height="29px"
         viewBox="0 0 24 24"
-        className="stroke-green-400 fill-none group-hover:fill-green-800 group-active:stroke-green-200 group-active:fill-green-600 group-active:duration-0 duration-300"
+        className="stroke-ligter fill-none group-hover:fill-green-800 group-active:stroke-white group-active:fill-ligter/45 group-active:duration-0 duration-300"
       >
         <path
           d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"

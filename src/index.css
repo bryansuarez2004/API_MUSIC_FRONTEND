@@ -37,8 +37,8 @@
   .card:hover::before {
     content: '';
     position: absolute;
-    width: 80%;
-    background-image: linear-gradient(180deg, rgb(0, 183, 255), rgb(255, 48, 255));
+    width: 90%;
+    background-image: linear-gradient(180deg, rgba(16, 185, 129, 1), rgba(30, 64, 175, 1));
     height: 170%;
     animation: rotBGimg 4s linear infinite;
     transition: all 5s linear;

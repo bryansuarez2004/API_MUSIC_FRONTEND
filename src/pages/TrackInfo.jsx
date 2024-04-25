@@ -9,14 +9,14 @@ import TrackList, { EsqueletonTrack } from "../components/shared/TrackList";
 import Account from "../components/layouts/Account";
 
 const colors = {
-    1 : "bg-sky-500",
-    2 : "bg-orange-500",
+    1 : "bg-green-500",
+    2 : "bg-fuchsia-500",
     3: "bg-purple-500"
 } 
 
 const gradients = {
-    1 : "linear-gradient(180deg, rgba(34,193,195,0.7) 0%, rgba(253,45,45,0) 78%)",
-    2 : "linear-gradient(180deg, rgba(249,115,22,0.7) 0%, rgba(253,45,45,0) 78%)",
+    1 : "linear-gradient(180deg, rgba(34, 197, 94, 0.7) 0%, rgba(253,45,45,0) 78%)",
+    2 : "linear-gradient(180deg, rgba(217, 70, 239, 0.7) 0%, rgba(253,45,45,0) 78%)",
     3: "linear-gradient(180deg, rgba(168,85,247,0.7) 0%, rgba(253,45,45,0) 78%)"
 }
 
@@ -119,7 +119,7 @@ const TrackInfo = () => {
         <p className='font-rubick text-gray-400 pl-5'>basadas en el autor</p>
         
            
-            { TrackInfo.name && <TrackList tracks={TracksRecomendations} isLoading={isLoadingTracks} functionOfTracks={functionOfTracks} btnLike /> }
+            { TrackInfo.name && <TrackList tracks={TracksRecomendations} isLoading={isLoadingTracks} functionOfTracks={functionOfTracks} btnLike btnBackPack /> }
             {/* aqui van las canciones */}
           </div>
 

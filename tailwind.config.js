@@ -11,7 +11,9 @@ export default {
         "primary": "#09090b",
         "secondary": "#1c1917",
         "tertiary":"#3f3f46",
-        "ligter":"#4ade80"
+        "ligter":"#22d3ee",
+        "soport":"#fb923c",
+         "error":"#ef4444"
       },
       fontFamily:{
         "dongle": "Dongle, sans-serif",
