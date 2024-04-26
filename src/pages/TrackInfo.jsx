@@ -107,8 +107,8 @@ const TrackInfo = () => {
        <section style={{background:`${gradients[numero]}`}}>
           <div className="p-5 flex   ">
             {   
-              !isLoading &&  (<div className={`${(trackInPlay.id === TrackInfo.id && modePlay) ? 'hidden' : ' block'} p-4 rounded-full bg-ligter flex justify-center items-center`}>
-               <FaPlay onClick={handleOpenMusic} className={` text-2xl hover:scale-[1.15] transition-all cursor-pointer  `} />
+              !isLoading &&  (<div onClick={handleOpenMusic}  className={`${(trackInPlay.id === TrackInfo.id && modePlay) ? 'hidden' : ' block'} p-4 rounded-full bg-ligter cursor-pointer hover:scale-110 transition-all duration-200 flex justify-center items-center`}>
+               <FaPlay className={` text-2xl `} />
                </div>)
             }
           

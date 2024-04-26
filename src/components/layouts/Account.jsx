@@ -48,12 +48,12 @@ const Options = ({modeAccount}) => {
   }
 
   return (
-    <div className={ `${modeAccount ? 'top-[40px] opacity-100' : ' top-[-150px] opacity-0'}   bg-tertiary absolute z-50 right-0 p-1 rounded-md grid w-[150px] gap-2 text-white transition-all duration-500`}>
+    <div className={ `${modeAccount ? 'top-[40px] opacity-100' : ' top-[-150px] opacity-0'}   bg-primary absolute z-50 right-0 p-1 rounded-md grid w-[150px] gap-2 text-white transition-all duration-500`}>
 {
   token === '' ?
    <>
-   <Link to={'/login'}  className=' p-2 rounded-md hover:bg-teal-500  cursor-pointer text-2xl font-dongle'>LOGIN</Link>
-   <Link to={'/register'}  className=' p-2 rounded-md hover:bg-zinc-500 cursor-pointer text-2xl font-dongle '>REGISTER</Link>
+   <Link to={'/login'}  className=' p-2 rounded-md hover:bg-teal-500 hover:text-primary  cursor-pointer text-2xl font-dongle'>LOGIN</Link>
+   <Link to={'/register'}  className=' p-2 rounded-md hover:bg-soport  hover:text-primary cursor-pointer text-2xl font-dongle '>REGISTER</Link>
    </>
   : 
   <>

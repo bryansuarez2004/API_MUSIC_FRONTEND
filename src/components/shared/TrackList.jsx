@@ -9,7 +9,7 @@ const TrackList = ({tracks,isLoading,functionOfArtist,functionOfTracks,btnLike=f
    <>
    
    
-    <div className=' p-3  rounded-md  w-full  md:max-w-[700px] mx-auto grid gap-2 '>
+    <div className=' p-3   rounded-md  w-full  md:max-w-[700px] mx-auto grid gap-2 '>
     {
         isLoading ? [1,2,3,4,5,6,7,8,9,10].map((num)=>{
             return <EsqueletonTrack key={num} />

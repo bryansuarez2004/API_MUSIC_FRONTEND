@@ -59,7 +59,7 @@ const FormLogin = () => {
          }
 
         })} type="text" />
-        {errors.email && <span className='text-soport font-rubick text-sm'>{errors.email.message}</span> }
+        {errors.email && <span className='text-error font-rubick text-sm'>{errors.email.message}</span> }
        </div>  
        <div className='flex flex-col '>
         <label  className={`${focusInput2 && !errors.password ? ' text-ligter' : 'text-gray-300'} font-rubick text-lg `} htmlFor="">Contraseña</label>
@@ -74,7 +74,8 @@ const FormLogin = () => {
        </div>  
 
        <div className=' text-gray-300 font-dongle text-2xl'>si no tienes una cuenta creada, creala en <Link to={'/register'} className='hover:underline  text-ligter font-dongle text-2xl'>register</Link> </div>
-       <button className='bg-teal-500  mx-auto p-3 py-2 w-[30%] rounded-md '>Iniciar</button>
+       <button className='bg-primary border-2 border-gray-300 hover:text-ligter hover:border-ligter transition-all duration-300 hover:tracking-widest active:scale-90 mx-auto p-3 py-2 w-[30%] rounded-3xl font-rubick text-gray-300  text-lg'>Iniciar</button>
+       
    </form>
  )
 }

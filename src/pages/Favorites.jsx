@@ -17,11 +17,15 @@ const Favorites = () => {
     <>
     <div className='bg-primary md:p-3  md:pl-0  h-screen '>
 
-    <div className='bg-secondary rounded-md h-[100%] overflow-auto'>
+    <div style={{
+            background: `linear-gradient(180deg, rgba(190, 18, 60, 0.7) 0%, rgba(253,45,45,0) 80%)`,
+          }} className='bg-secondary rounded-md h-[100%] overflow-auto'>
+      <HeaderFavorites isLoading={favorites.isLoading} />
      
-      <HeaderFavorites />
     <TrackList isLoading={favorites.isLoading} tracks={favorites.tracks} btnLike />     
-
+         {
+           favorites.tracks.length === 0 && <span className='text-white font-rubick p-5'>Usa este espacio es para guardar aquellas canciones que te gustaron</span>
+         }
     </div>
     </div>
 

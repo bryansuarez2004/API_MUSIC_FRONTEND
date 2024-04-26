@@ -10,10 +10,14 @@ const Search = () => {
 
   const onSubmit = handleSubmit((data) => {
     //en data esta el objeto necesario para buscar canciones
-    if (data.name) {
-      dispatch(searchTracksThunk(data));
-      reset();
-    }
+
+    data.limit = 15
+  
+  
+     if (data.name) {
+     dispatch(searchTracksThunk(data));
+     reset();
+     }
   });
 
   return (
@@ -27,16 +31,7 @@ const Search = () => {
           {...register("name")}
           className="  tracking-wider line-clamp-1 font-dongle text-lg md:text-xl  grow bg-transparent outline-none text-white"
         />
-        <select
-          name=""
-          id=""
-          {...register("limit")}
-          className="bg-transparent cursor-pointer text-ligter *:bg-secondary outline-none font-dongle text-2xl"
-        >
-          <option value="10">10</option>
-          <option value="15">15</option>
-          <option value="5">5</option>
-        </select>
+        
       </div>
     </form>
   );
