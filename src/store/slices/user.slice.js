@@ -89,11 +89,26 @@ const user = createSlice({
        },
        addPlaylist : (state,action)=>{
         state.playlists.data.push(action.payload)
+       },
+       resetBackPack : (state,action)=>{
+       state.backPack = []
+       },
+       sharePlaylist : (state,action) => {
+          const idP = action.payload
+          const newPlaylists = state.playlists.data.map((playlist)=>{
+              if(playlist.id === idP){
+                return {...playlist,shared:true}
+              } else{
+                return playlist
+              }
+
+            })
+            state.playlists.data = newPlaylists
        }
     }
 })
 
-export const {setLoginUsers,removeTrackInBackPack,addPlaylist,removePlaylist,setPlaylists,addTrackToBackPack,logOutSesion,isLoginOff,isLoginOn,setFavoriteTracks,addFavoriteTrack,removeFavoriteTracks}=user.actions
+export const {setLoginUsers,sharePlaylist,removeTrackInBackPack,resetBackPack,addPlaylist,removePlaylist,setPlaylists,addTrackToBackPack,logOutSesion,isLoginOff,isLoginOn,setFavoriteTracks,addFavoriteTrack,removeFavoriteTracks}=user.actions
 
 export default user.reducer
 
@@ -140,16 +155,17 @@ export const getFavoritesTracksThunk = () => (dispatch)=>{
 }
 
 export const getPlaylistsThunk = () => (dispatch) =>{
-
+  dispatch(isLoginOn('playlists'))
     axiosMusic.get('/playlists')
     .then(({data})=>{
       dispatch(setPlaylists(data))
+      dispatch(isLoginOff('playlists'))
       console.log(data)})
     .catch((err)=>console.log(err))
 }
 
 
-export const createPlaylistThunk = (object,numberOfTracks)=>(dispatch) =>{
+export const createPlaylistThunk = (object,numberOfTracks,reset)=>(dispatch) =>{
 
   const id = toast.loading("Creando Playlist...")
 
@@ -159,6 +175,8 @@ export const createPlaylistThunk = (object,numberOfTracks)=>(dispatch) =>{
     toast.update(id, { render: `Playlist creada correctamente`, type: "success", isLoading: false, autoClose:1500,pauseOnHover: false,closeOnClick: true, });
       
     dispatch(addPlaylist({...data,tracks:new Array(numberOfTracks)}))
+    reset()
+    dispatch(resetBackPack())
     console.log(data)})
    .catch((err)=>console.log(err))
 

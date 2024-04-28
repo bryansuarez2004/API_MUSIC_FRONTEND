@@ -1,9 +1,9 @@
 import React from 'react'
 
-const HeaderPlaylist = () => {
+const HeaderPlaylist = ({isLoading}) => {
   return (
     <section 
-    className= {`pt-[50px]  inset-0 bg-cover bg-bottom bg-black/35 relative flex flex-col md:flex-row md:items-end items-center gap-5 p-7  min-h-[250px]`}>
+    className= {`${isLoading ? ' bg-black/35' : ' bg-green-600'} pt-[50px]  inset-0 bg-cover bg-bottom  relative flex flex-col md:flex-row md:items-end items-center gap-5 p-7  min-h-[250px]`}>
           
           
            

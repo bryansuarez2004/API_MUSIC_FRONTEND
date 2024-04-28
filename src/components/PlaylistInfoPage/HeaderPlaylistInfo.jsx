@@ -5,6 +5,8 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { deletePlaylistThunk } from "../../store/slices/user.slice";
 import { toast } from "react-toastify";
+import { FiExternalLink } from "react-icons/fi";
+import { FaLink } from "react-icons/fa6";
 
 const HeaderPlaylistInfo = ({ playlist, setCurrentPlaylist, isLoading }) => {
   const dispatch = useDispatch();
@@ -17,10 +19,10 @@ const HeaderPlaylistInfo = ({ playlist, setCurrentPlaylist, isLoading }) => {
       .put(`/playlists/${idPlaylist}/changeToShared`)
       .then(({ data }) => {
         toast.update(id, {
-          render: `Playlist lista en modo publica`,
+          render: `Playlist en modo publica, ahora copia el link y compartelo con tus amigos`,
           type: "success",
           isLoading: false,
-          autoClose: 1700,
+          autoClose: 2000,
           pauseOnHover: false,
           closeOnClick: true,
         });
@@ -85,17 +87,19 @@ const HeaderPlaylistInfo = ({ playlist, setCurrentPlaylist, isLoading }) => {
               {playlist.tracks?.length} canciones
             </div>
           </div>
-          <div className="md:self-end flex gap-3">
-            <button onClick={() => handleDeletePlaylist(playlist.id)}>
-              eliminar
-            </button>
+          <div className="md:self-end flex gap-6 md:items-center">
+
+            <ButtonTrash functionToDelete={handleDeletePlaylist} id={playlist.id} stiles={'scale-[1.8]'} />
+            
 
             {playlist.shared ? (
-              <button onClick={() => handleGetLink(playlist.id)}>obtener Link</button>
+              <button onClick={() => handleGetLink(playlist.id)} className="p-[7px] py-[8.5px] hover:bg-gray-700 group bg-gray-500 border-2 border-transparent rounded-lg">
+                <FaLink className="text-2xl text-white group-hover:scale-[1.15] transition-all duration-300" />
+              </button>
             ) : (
               <div className="flex   gap-3 ">
-                <button onClick={() => handleShared(playlist.id)}>
-                  compartir
+                <button onClick={() => handleShared(playlist.id)} className="p-[7px] py-[8.5px] hover:bg-sky-900 group bg-sky-600 border-2 border-transparent rounded-lg">
+                <FiExternalLink className="text-2xl text-white group-hover:scale-[1.15] transition-all duration-300"  />
                 </button>
                 {/* <ButtonLink text={"compartir"} /> */}
               </div>

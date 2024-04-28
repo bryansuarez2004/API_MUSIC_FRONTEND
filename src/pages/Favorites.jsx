@@ -24,7 +24,7 @@ const Favorites = () => {
      
     <TrackList isLoading={favorites.isLoading} tracks={favorites.tracks} btnLike />     
          {
-           favorites.tracks.length === 0 && <span className='text-white font-rubick p-5'>Usa este espacio es para guardar aquellas canciones que te gustaron</span>
+           favorites.tracks.length === 0 && <span className='text-white font-rubick p-5'>Usa este espacio para guardar aquellas canciones que te gustaron</span>
          }
     </div>
     </div>
