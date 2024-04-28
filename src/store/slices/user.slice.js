@@ -113,7 +113,7 @@ export const {setLoginUsers,sharePlaylist,removeTrackInBackPack,resetBackPack,ad
 export default user.reducer
 
 
-export const loginUserThunk = (data)=> (dispatch)=>{
+export const loginUserThunk = (data,navigate)=> (dispatch)=>{
   
     const id = toast.loading("Verificando datos...")
 
@@ -122,9 +122,10 @@ export const loginUserThunk = (data)=> (dispatch)=>{
    axios.post('https://api-music-backend.onrender.com/users/login',data)
    .then(({data})=>{
       console.log(data);
-      toast.update(id, { render: `bienvenido ${data.name}`, type: "success", isLoading: false, autoClose:1700,pauseOnHover: false,closeOnClick: true, });
+      toast.update(id, { render: `bienvenido ${data.name}`, type: "success", isLoading: false, autoClose:2300,pauseOnHover: false,closeOnClick: true, });
       dispatch(setLoginUsers(data))
-      dispatch(getFavoritesTracksThunk())
+      dispatch(getFavoritesTracksThunk(navigate))
+      
       sessionStorage.setItem('user', JSON.stringify(data));
    })
    .catch((err)=>{
@@ -143,13 +144,14 @@ export const loginUserThunk = (data)=> (dispatch)=>{
 } 
 
 
-export const getFavoritesTracksThunk = () => (dispatch)=>{
+export const getFavoritesTracksThunk = (navigate) => (dispatch)=>{
    dispatch(isLoginOn('favorites'))
 
     axiosMusic.get('/users/favoriteTracks')
     .then(({data})=>{
          dispatch(setFavoriteTracks(data))
          dispatch(isLoginOff('favorites'))
+         navigate('/')
         console.log(data)})
     .catch((err)=>console.log(err))
 }

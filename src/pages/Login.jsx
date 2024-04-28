@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { ButtonToHome } from '../components/Ui/Ux/Buttons'
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { loginUserThunk } from '../store/slices/user.slice'
 import axios from "axios";
@@ -33,10 +33,11 @@ const FormLogin = () => {
    const dispatch = useDispatch()
    const [focusInput2, setFocusInput2] = useState(false)
  const [focusInput1, setFocusInput1] = useState(false)
+ const navigate = useNavigate()
 
   const submitLogin = handleSubmit((data)=>{
      console.log(data);
-     dispatch(loginUserThunk(data))
+     dispatch(loginUserThunk(data,navigate))
 
 
      
