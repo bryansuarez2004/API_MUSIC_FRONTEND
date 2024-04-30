@@ -82,7 +82,7 @@ const TrackInfo = () => {
   return (
     <>
     <div className="bg-primary md:p-3  md:pl-0  h-screen ">
-      <div className="bg-secondary rounded-md h-[100%] overflow-auto">
+      <div className="bg-secondary rounded-md h-[100%] overflow-auto customScroll">
         <section className= {`${colors[numero]} pt-[50px] flex flex-col md:flex-row md:items-end items-center gap-5 p-7  min-h-[250px]`}>
           
            

@@ -19,7 +19,7 @@ const Favorites = () => {
 
     <div style={{
             background: `linear-gradient(180deg, rgba(190, 18, 60, 0.7) 0%, rgba(253,45,45,0) 80%)`,
-          }} className='bg-secondary rounded-md h-[100%] overflow-auto'>
+          }} className='bg-secondary rounded-md h-[100%] overflow-auto customScroll'>
       <HeaderFavorites isLoading={favorites.isLoading} />
      
     <TrackList isLoading={favorites.isLoading} tracks={favorites.tracks} btnLike />     

@@ -61,3 +61,17 @@
     border-radius: 15px;
   }  
   
+
+ /* estilos de scroll personalizado  */
+
+ .customScroll::-webkit-scrollbar {
+  background-color: transparent; /* Color de fondo */
+}
+
+.customScroll::-webkit-scrollbar-thumb {
+  background-color: #44403c; /* Color de la barra */
+}
+
+.customScroll::-webkit-scrollbar {
+  width: 7px; /* Ancho de la barra */
+}

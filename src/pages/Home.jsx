@@ -31,7 +31,7 @@ const Home = () => {
     
     <div className='bg-primary md:p-3  md:pl-0  h-screen '>
 
-    <div className='bg-secondary rounded-md h-[100%] overflow-auto'>
+    <div className='bg-secondary rounded-md h-[100%] overflow-auto customScroll'>
     
   <ArtistSlider />
 

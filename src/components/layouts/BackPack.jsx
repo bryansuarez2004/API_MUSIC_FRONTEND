@@ -41,7 +41,7 @@ const BackPack = ({modeBackPack}) => {
              <input placeholder='Nombre de la playlist' {...register('name')} type="text" className='w-full bg-tertiary text-white font-rubick rounded-lg outline-none p-1' />
           
         
-         <div className='overflow-auto my-1'>
+         <div className='overflow-auto customScroll my-1'>
            {
             backPack.length === 0 && <span className='font-rubick text-zinc-400 text-xs mt-3  block'>Agrega canciones para poder crear una playlist</span>
            }

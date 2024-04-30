@@ -6,7 +6,7 @@ const PlaylistsList = ({playlists,isLoading}) => {
     <div className='  p-3 grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-3 '>
 
     {
-       isLoading && [1,2,3,4,5,6,7,8,9,10,11,12].map((e)=>{
+       isLoading && [1,2,3,4,5,6,7,8,9,1,11,12].map((e)=>{
                 return <div key={e} className='w-full bg-tertiary/30 flex gap-2 p-2   h-[90px] rounded-2xl animate-pulse'>
                    <div className=' grow h-full bg-primary/60 rounded-2xl animate-pulse'>
                    </div>

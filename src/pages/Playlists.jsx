@@ -12,7 +12,11 @@ const Playlists = () => {
      const {playlists} = useSelector((store)=>store.user)
 
      useEffect(()=>{
-      dispatch(getPlaylistsThunk())
+
+      if(playlists.data.length === 0){
+
+        dispatch(getPlaylistsThunk())
+      }
      },[])
   
 
@@ -22,7 +26,7 @@ const Playlists = () => {
 
     <div style={{
             background: `${!playlists.isLoading ? 'linear-gradient(180deg, rgba(22, 163, 74, 0.7) 0%, rgba(253,45,45,0) 80%)' : '' } `,
-          }} className='bg-secondary rounded-md h-[100%] overflow-auto '>
+          }} className='bg-secondary rounded-md h-[100%] overflow-auto customScroll '>
        <HeaderPlaylist isLoading={playlists.isLoading} />
 
        {

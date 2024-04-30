@@ -6,7 +6,8 @@ import { useDispatch } from 'react-redux'
 import { loginUserThunk } from '../store/slices/user.slice'
 import axios from "axios";
 import { useState } from 'react'
-
+import { FaEye } from "react-icons/fa";
+import { IoEye, IoEyeOffSharp } from 'react-icons/io5'
 
 const Login = () => {
 
@@ -34,6 +35,7 @@ const FormLogin = () => {
    const [focusInput2, setFocusInput2] = useState(false)
  const [focusInput1, setFocusInput1] = useState(false)
  const navigate = useNavigate()
+  const [modePassword, setModePassword] = useState(true)
 
   const submitLogin = handleSubmit((data)=>{
      console.log(data);
@@ -64,13 +66,25 @@ const FormLogin = () => {
        </div>  
        <div className='flex flex-col '>
         <label  className={`${focusInput2 && !errors.password ? ' text-ligter' : 'text-gray-300'} font-rubick text-lg `} htmlFor="">Contraseña</label>
-        <input onBlurCapture={()=>setFocusInput2(false)} onFocus={()=>setFocusInput2(true)}  className={`${errors.password ?'border-error' : 'border-gray-300 focus:border-ligter'}  text-gray-300 p-2 rounded-md bg-primary  outline-none border-2 font-rubick `} {...register('password',{
+        <div className={`${errors.password ?'border-error' : `${focusInput2 ? 'border-ligter' : 'border-gray-300'}`} flex gap-2 border-2  rounded-lg `}>
+          
+        <input type={modePassword? 'password':'text'} onBlurCapture={()=>setFocusInput2(false)} onFocus={()=>setFocusInput2(true)}  className={`  text-gray-300 p-2 rounded-md bg-primary grow  outline-none font-rubick `} {...register('password',{
          required:{
            value:true,
            message:'password es requerido'
          },
 
-        })} type="text" />
+        })}/>
+        <div onClick={()=>setModePassword(!modePassword)} className=' p-1 pr-2  flex items-center cursor-pointer'>
+          {
+            modePassword ?
+            <IoEyeOffSharp  className={` ${focusInput2 ? ' text-ligter' :'text-gray-300'} text-2xl`} />
+            :
+            <IoEye  className={` ${focusInput2 ? ' text-ligter' :'text-gray-300'} text-2xl`} />
+          }
+       
+        </div>
+        </div> 
         {errors.password && <span className='text-error font-rubick text-sm'>{errors.password.message}</span> }
        </div>  
 

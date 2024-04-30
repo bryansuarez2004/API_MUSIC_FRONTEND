@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { axiosMusic } from "../../utils/configAxios";
 import { ToastContainer, toast } from 'react-toastify';
 import axios from "axios";
+import { removeCurrentTrack } from "./playTrack.slice";
 
 
 const verifySessionStorage = (value) => {
@@ -124,7 +125,7 @@ export const loginUserThunk = (data,navigate)=> (dispatch)=>{
       console.log(data);
       toast.update(id, { render: `bienvenido ${data.name}`, type: "success", isLoading: false, autoClose:2300,pauseOnHover: false,closeOnClick: true, });
       dispatch(setLoginUsers(data))
-      dispatch(getFavoritesTracksThunk(navigate))
+      dispatch(getFavoritesTracksThunk(navigate,true))
       
       sessionStorage.setItem('user', JSON.stringify(data));
    })
@@ -144,7 +145,7 @@ export const loginUserThunk = (data,navigate)=> (dispatch)=>{
 } 
 
 
-export const getFavoritesTracksThunk = (navigate) => (dispatch)=>{
+export const getFavoritesTracksThunk = (navigate,reload) => (dispatch)=>{
    dispatch(isLoginOn('favorites'))
 
     axiosMusic.get('/users/favoriteTracks')
@@ -152,6 +153,7 @@ export const getFavoritesTracksThunk = (navigate) => (dispatch)=>{
          dispatch(setFavoriteTracks(data))
          dispatch(isLoginOff('favorites'))
          navigate('/')
+         if(reload) dispatch(removeCurrentTrack())
         console.log(data)})
     .catch((err)=>console.log(err))
 }

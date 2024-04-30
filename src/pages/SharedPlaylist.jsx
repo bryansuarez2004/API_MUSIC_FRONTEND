@@ -38,7 +38,7 @@ const SharedPlaylist = () => {
    if(errors){
     return (
         <div className="bg-primary md:p-3  md:pl-0  h-screen ">
-          <div className="bg-secondary rounded-md h-[100%] overflow-auto flex flex-col justify-center items-center">
+          <div className="bg-secondary rounded-md h-[100%] customScroll overflow-auto flex flex-col justify-center items-center">
             
           <BiConfused className='text-[150px] text-green-400' />
            <span className='font-rubick text-3xl text-green-400 font-bold text-center'> PLAYLIST NO DISPONIBLE</span>
