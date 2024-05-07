@@ -208,7 +208,7 @@ const ButtonAddToBackPack = ({ track }) => {
 
  const ButtonTrash = ({functionToDelete,id ,stiles}) => {
   return (
-    <div onClick={(e)=>functionToDelete(id,e)} className={`bin-button ${stiles}`}>
+    <div title="eliminar" onClick={(e)=>functionToDelete(id,e)} className={`bin-button ${stiles}`}>
   <svg
     className="bin-top"
     viewBox="0 0 39 7"

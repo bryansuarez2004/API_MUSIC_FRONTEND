@@ -5,6 +5,7 @@ import { ButtonLike } from '../components/Ui/Ux/Buttons'
 import TrackList from '../components/shared/TrackList'
 import HeaderFavorites from '../components/FavoritesPage/HeaderFavorites'
 import Account from '../components/layouts/Account'
+import Footer from '../components/layouts/Footer'
 
 const Favorites = () => {
     const dispatch = useDispatch()
@@ -22,10 +23,16 @@ const Favorites = () => {
           }} className='bg-secondary rounded-md h-[100%] overflow-auto customScroll'>
       <HeaderFavorites isLoading={favorites.isLoading} />
      
-    <TrackList isLoading={favorites.isLoading} tracks={favorites.tracks} btnLike />     
          {
-           favorites.tracks.length === 0 && <span className='text-white font-rubick p-5'>Usa este espacio para guardar aquellas canciones que te gustaron</span>
-         }
+           (favorites.tracks.length === 0 && !favorites.isLoading) && <span className='text-white font-rubick p-5'>Usa este espacio para guardar aquellas canciones que te gustaron</span>
+          }
+        <div className='flex flex-col justify-between min-h-[350px] mb-[60px] md:mb-0'>
+          <TrackList isLoading={favorites.isLoading} tracks={favorites.tracks} btnLike />     
+
+ <Footer />
+</div> 
+
+
     </div>
     </div>
 

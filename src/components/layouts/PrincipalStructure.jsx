@@ -7,7 +7,8 @@ import ListenTracks from './ListenTracks'
 
 const PrincipalStructure = () => {
 
-    const {modePlay}=useSelector((store)=>store.playTrack)
+    const {modePlay,trackInPlay}=useSelector((store)=>store.playTrack)
+    const {modeBackPack}=useSelector((store)=>store.user)
    
 
 
@@ -19,7 +20,11 @@ const PrincipalStructure = () => {
         <Aside />
     
     <Outlet />
+    {
+       (!modePlay && trackInPlay.name) && <div className={`${modeBackPack ? 'left-[20%] w-[79%]' : 'left-0 w-full '} mb-[70px] md:mb-0 h-[60px] bg-teal-950 bottom-0  transition-all duration-200 fixed z-50`}>
 
+       </div>
+    }
     </div>
     <ListenTracks />
 

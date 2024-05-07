@@ -93,12 +93,12 @@ const HeaderPlaylistInfo = ({ playlist, setCurrentPlaylist, isLoading }) => {
             
 
             {playlist.shared ? (
-              <button onClick={() => handleGetLink(playlist.id)} className="p-[7px] py-[8.5px] hover:bg-gray-700 group bg-gray-500 border-2 border-transparent rounded-lg">
+              <button title="Obtener Link" onClick={() => handleGetLink(playlist.id)} className="p-[7px] py-[8.5px] hover:bg-gray-700 group bg-gray-500 border-2 border-transparent rounded-lg">
                 <FaLink className="text-2xl text-white group-hover:scale-[1.15] transition-all duration-300" />
               </button>
             ) : (
               <div className="flex   gap-3 ">
-                <button onClick={() => handleShared(playlist.id)} className="p-[7px] py-[8.5px] hover:bg-sky-900 group bg-sky-600 border-2 border-transparent rounded-lg">
+                <button title="Compartir" onClick={() => handleShared(playlist.id)} className="p-[7px] py-[8.5px] hover:bg-sky-900 group bg-sky-600 border-2 border-transparent rounded-lg">
                 <FiExternalLink className="text-2xl text-white group-hover:scale-[1.15] transition-all duration-300"  />
                 </button>
                 {/* <ButtonLink text={"compartir"} /> */}

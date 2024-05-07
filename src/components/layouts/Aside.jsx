@@ -9,7 +9,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { TbBackpack } from "react-icons/tb";
 import BackPack from './BackPack';
 import { changePage } from '../../store/slices/page.slice';
-
+import { changeModeBackpack } from "../../store/slices/user.slice";
 
    
 
@@ -18,11 +18,13 @@ import { changePage } from '../../store/slices/page.slice';
 const Aside = () => {
     const dispatch = useDispatch()
   
-    const [modeBackPack, setModeBackPack] = useState(false)
-    const {token}=  useSelector((store)=>store.user)
+    const {token,modeBackPack} =  useSelector((store)=>store.user)
     const {currentPage}=  useSelector((store)=>store.page)
-
+  
     
+      
+
+  
     useEffect(()=>{
         dispatch(offModePlay())
     },[currentPage])
@@ -30,7 +32,7 @@ const Aside = () => {
 
     const handleTracksForPlaylist = ()=> {
      if(token !== ''){
-       setModeBackPack(!modeBackPack)
+       dispatch(changeModeBackpack())
 
      }else{
       toast.warn("Debes hacer login para acceder a una mochila  ", {

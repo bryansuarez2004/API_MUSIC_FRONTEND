@@ -31,7 +31,8 @@ const user = createSlice({
             data:[],
             isLoading:false
         },
-        backPack: []
+        backPack: [],
+        modeBackPack: false,
         
 
     },
@@ -50,6 +51,9 @@ const user = createSlice({
        },
        setFavoriteTracks : (state,action)=>{
          state.favorites.tracks = action.payload
+       },
+       changeModeBackpack: (state,action)=>{
+              state.modeBackPack = !state.modeBackPack
        },
        isLoginOn : (state,action) =>{
          state[action.payload].isLoading = true
@@ -109,7 +113,7 @@ const user = createSlice({
     }
 })
 
-export const {setLoginUsers,sharePlaylist,removeTrackInBackPack,resetBackPack,addPlaylist,removePlaylist,setPlaylists,addTrackToBackPack,logOutSesion,isLoginOff,isLoginOn,setFavoriteTracks,addFavoriteTrack,removeFavoriteTracks}=user.actions
+export const {setLoginUsers,changeModeBackpack,sharePlaylist,removeTrackInBackPack,resetBackPack,addPlaylist,removePlaylist,setPlaylists,addTrackToBackPack,logOutSesion,isLoginOff,isLoginOn,setFavoriteTracks,addFavoriteTrack,removeFavoriteTracks}=user.actions
 
 export default user.reducer
 

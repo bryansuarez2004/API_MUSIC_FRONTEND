@@ -110,15 +110,15 @@ const PlaylistCard = ({playlist}) => {
 
        <ButtonTrash functionToDelete={handleRemovePlaylist} id={playlist.id} stiles={'scale-[1.4]'} />
        {playlist.shared ? 
-         <button onClick={(e)=>handleGetLink(e,playlist.id)} className="p-[4px] py-[6.5px] hover:bg-gray-700 group bg-gray-500 border-2 border-transparent rounded-lg"
+         <button onClick={(e)=>handleGetLink(e,playlist.id)} title="Obtener Link" className="p-[4px] py-[6.5px] hover:bg-gray-700 group bg-gray-500 border-2 border-transparent rounded-lg"
          >
 
 <FaLink className="text-xl text-white group-hover:scale-[1.1] transition-all duration-300"  />
          </button>
        : 
-        <button onClick={(e)=>handleShared(e,playlist.id)}  className="p-[4px] py-[6.5px] hover:bg-sky-900 group bg-sky-600 border-2 border-transparent rounded-lg"
+        <button onClick={(e)=>handleShared(e,playlist.id)} title="Compartir" className="p-[4px] py-[6.5px] hover:bg-sky-900 group bg-sky-600 border-2 border-transparent rounded-lg"
         >
-         <FiExternalLink className="text-xl text-white group-hover:scale-[1.1] transition-all duration-300"  />
+         <FiExternalLink  className="text-xl text-white group-hover:scale-[1.1] transition-all duration-300"  />
 
         </button>
        } 

@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import Albums from "../components/ArtistPage/Albums";
 import TrackList from "../components/shared/TrackList";
 import Account from "../components/layouts/Account";
+import Footer from "../components/layouts/Footer";
 
 const Artists = () => {
   const [ArtistInCurrentPage, setArtistInCurrentPage] = useState({});
@@ -74,6 +75,8 @@ const Artists = () => {
             btnBackPack
             />
         </div>
+
+        <Footer />
       </div>
     </div>
 

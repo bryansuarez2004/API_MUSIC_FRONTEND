@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { onModePlay, setTrackInPlay } from "../store/slices/playTrack.slice";
 import TrackList, { EsqueletonTrack } from "../components/shared/TrackList";
 import Account from "../components/layouts/Account";
+import Footer from "../components/layouts/Footer";
 
 const colors = {
     1 : "bg-green-500",
@@ -125,7 +126,7 @@ const TrackInfo = () => {
 
        </section>
 
-
+      <Footer />
       </div>
     </div>
 

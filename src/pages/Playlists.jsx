@@ -4,6 +4,7 @@ import Account from '../components/layouts/Account'
 import HeaderPlaylist from '../components/PlaylistsPage/HeaderPlaylist'
 import { getPlaylistsThunk } from '../store/slices/user.slice'
 import PlaylistsList from '../components/PlaylistsPage/PlaylistsList'
+import Footer from '../components/layouts/Footer'
 
 
 
@@ -22,7 +23,7 @@ const Playlists = () => {
 
   return (
     <>
-    <div  className='bg-primary md:p-3  md:pl-0  h-screen '>
+    <div  className='bg-secondary md:p-3  md:pl-0  h-screen '>
 
     <div style={{
             background: `${!playlists.isLoading ? 'linear-gradient(180deg, rgba(22, 163, 74, 0.7) 0%, rgba(253,45,45,0) 80%)' : '' } `,
@@ -32,7 +33,11 @@ const Playlists = () => {
        {
         (!playlists.isLoading && playlists.data.length === 0) && <div className='font-rubick text-gray-300 font-medium p-5 '>Agrega canciones a la mochila, colocales un nombre y crea una playlist!!</div>
        }
+       <div className='flex flex-col justify-between min-h-[350px] mb-[60px] md:mb-0'>
+
        <PlaylistsList playlists={playlists.data} isLoading={playlists.isLoading} />
+        <Footer />
+       </div>
 
     </div>
     </div>
@@ -40,6 +45,7 @@ const Playlists = () => {
     {
       !playlists.isLoading  && <Account />
     }
+
     </>
   )
 }
