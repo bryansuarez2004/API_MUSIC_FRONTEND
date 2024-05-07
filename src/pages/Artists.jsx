@@ -39,7 +39,7 @@ const Artists = () => {
 
     <>
     
-    <div className="bg-primary md:p-3  md:pl-0  h-screen ">
+    <div className="bg-primary md:p-3  md:pl-0  h-screen  ">
       <div className="bg-secondary rounded-md h-[100%] w-full overflow-auto customScroll">
         {
           isLoading ? <div className="h-[260px] bg-secondary animate-pulse"></div>

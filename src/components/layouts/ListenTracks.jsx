@@ -16,7 +16,7 @@ const ListenTracks = () => {
   
    console.log(modePlay);
   return (
-    <div className={`${modePlay ? 'translate-x-0 ' : 'translate-x-[100%]' } p-3 md:pl-0  fixed md:w-[30vw] z-30  top-0 right-0 w-screen h-screen transition-all  duration-500 bg-primary  text-white customScroll overflow-auto`}>
+    <div className={`${modePlay ? 'translate-x-0 ' : 'translate-x-[100%]' } pb-[100px] md:pb-[60px] p-3 md:pl-0  fixed md:w-[30vw] z-30  top-0 right-0 w-screen h-screen transition-all  duration-500 bg-primary  text-white customScroll overflow-auto`}>
       <div className='bg-secondary p-2 rounded-md  '>
 
        <h2 className='font-rubick pb-2 text-ligter'>{trackInPlay.name}</h2>

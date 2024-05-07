@@ -16,7 +16,7 @@ const Favorites = () => {
 
   return (
     <>
-    <div className='bg-primary md:p-3  md:pl-0  h-screen  pb-[40px] md:pb-[30px]' >
+    <div className='bg-primary md:p-3  md:pl-0  h-screen  ' >
 
     <div style={{
             background: `linear-gradient(180deg, rgba(190, 18, 60, 0.7) 0%, rgba(253,45,45,0) 80%)`,
@@ -29,7 +29,7 @@ const Favorites = () => {
         <div className='flex flex-col justify-between min-h-[350px] mb-[60px] md:mb-0'>
           <TrackList isLoading={favorites.isLoading} tracks={favorites.tracks} btnLike />     
 
- <Footer />
+ <Footer minus />
 </div> 
 
 

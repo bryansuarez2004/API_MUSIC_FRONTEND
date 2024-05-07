@@ -87,7 +87,7 @@ const HeaderPlaylistInfo = ({ playlist, setCurrentPlaylist, isLoading }) => {
               {playlist.tracks?.length} canciones
             </div>
           </div>
-          <div className="md:self-end flex gap-6 md:items-center">
+          <div className="md:self-end flex gap-6 items-center">
 
             <ButtonTrash functionToDelete={handleDeletePlaylist} id={playlist.id} stiles={'scale-[1.8]'} />
             

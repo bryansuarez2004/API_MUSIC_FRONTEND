@@ -36,7 +36,7 @@ const Playlists = () => {
        <div className='flex flex-col justify-between min-h-[350px] mb-[60px] md:mb-0'>
 
        <PlaylistsList playlists={playlists.data} isLoading={playlists.isLoading} />
-        <Footer />
+        <Footer minus />
        </div>
 
     </div>

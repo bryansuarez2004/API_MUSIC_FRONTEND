@@ -25,9 +25,9 @@ const PlaylistInfo = () => {
 
 
   return (
-    <div className='bg-primary md:p-3  md:pl-0  h-screen '>
+    <div className='bg-primary md:p-3  md:pl-0  h-screen  '>
 
-    <div className='bg-secondary rounded-md h-[100%] overflow-auto customScroll'>
+    <div className='bg-secondary pb-[130px] md:pb-[60px] rounded-md h-[100%] overflow-auto customScroll'>
      <HeaderPlaylistInfo playlist={currentPlaylist}  setCurrentPlaylist={setCurrentPlaylist} isLoading={isLoading}/>
      <div  style={{
             background: `${!isLoading ? 'linear-gradient(180deg, rgba(52, 211, 153,0.5) 0%, rgba(253,45,45,0) 70%)' : ''} `,

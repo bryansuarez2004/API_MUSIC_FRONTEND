@@ -37,8 +37,8 @@ const SharedPlaylist = () => {
 
    if(errors){
     return (
-        <div className="bg-primary md:p-3  md:pl-0  h-screen ">
-          <div className="bg-secondary rounded-md h-[100%] customScroll overflow-auto flex flex-col justify-center items-center">
+        <div className="bg-primary md:p-3  md:pl-0  h-screen  ">
+          <div className="bg-secondary rounded-md  h-[100%] customScroll overflow-auto flex flex-col justify-center items-center">
             
           <BiConfused className='text-[150px] text-green-400' />
            <span className='font-rubick text-3xl text-green-400 font-bold text-center'> PLAYLIST NO DISPONIBLE</span>
@@ -53,8 +53,8 @@ const SharedPlaylist = () => {
     )
    }else{
     return (
-        <div className="bg-primary md:p-3  md:pl-0  h-screen ">
-          <div className="bg-secondary rounded-md h-[100%] overflow-auto">
+        <div className="bg-primary md:p-3  md:pl-0  h-screen  ">
+          <div className="bg-secondary rounded-md h-[100%] overflow-auto pb-[120px] md:pb-[60px]">
             <HeaderPlaylistShared playlist={currentPlaylist} isLoading={isLoading} />
             <div  style={{
                 background: `${!isLoading ? 'linear-gradient(180deg, rgba(163, 230, 53,0.5) 0%, rgba(253,45,45,0) 70%)' : ''} `,

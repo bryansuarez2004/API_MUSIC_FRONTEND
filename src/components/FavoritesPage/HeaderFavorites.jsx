@@ -9,7 +9,7 @@ const HeaderFavorites = ({isLoading}) => {
            
           
           
-        <h2 className='text-6xl font-rubick font-bold text-white'>Tus canciones favoritas</h2>
+        <h2 className='text-5xl md:text-6xl font-rubick font-bold text-white'>Tus canciones favoritas</h2>
           
         </section>
   )
