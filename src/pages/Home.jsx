@@ -32,7 +32,7 @@ const Home = () => {
     
     <div className='bg-primary md:p-3  md:pl-0  h-screen '>
 
-    <div className='bg-secondary rounded-md h-[100%] overflow-auto customScroll pb-[60px] md:pb-0 '>
+    <div className='bg-secondary rounded-md h-[100%] overflow-auto customScroll pb-[100px] md:pb-[20px] '>
     
   <ArtistSlider />
 

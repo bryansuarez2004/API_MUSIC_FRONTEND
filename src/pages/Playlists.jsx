@@ -23,7 +23,7 @@ const Playlists = () => {
 
   return (
     <>
-    <div  className='bg-secondary md:p-3  md:pl-0  h-screen '>
+    <div  className='bg-secondary md:p-3  md:pl-0  h-screen  pb-[40px] md:pb-[30px]'>
 
     <div style={{
             background: `${!playlists.isLoading ? 'linear-gradient(180deg, rgba(22, 163, 74, 0.7) 0%, rgba(253,45,45,0) 80%)' : '' } `,

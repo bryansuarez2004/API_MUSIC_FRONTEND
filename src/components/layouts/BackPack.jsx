@@ -33,7 +33,7 @@ const BackPack = ({modeBackPack}) => {
 
 
   return (
-    <div className={`${modeBackPack ? 'translate-y-0 opacity-100' : 'translate-y-[150%] opacity-0 md:translate-y-[-120%]  ' } md:z-10 bg-secondary w-[60vw] transition-all duration-300 aspect-[1/1.5] md:aspect-auto md:w-auto md:right-auto md:bottom-auto  fixed right-6 bottom-20 md:relative rounded-md md:mt-3 md:h-auto md:grow md:block p-2 overflow-auto max-w-[240px] md:max-w-none`}>
+    <div className={`${modeBackPack ? 'translate-y-0 opacity-100' : 'translate-y-[150%] z-40 opacity-0 md:translate-y-[-120%]  ' } md:z-10 z-[100]  bg-secondary w-[60vw] transition-all duration-300 aspect-[1/1.5] md:aspect-auto md:w-auto md:right-auto md:bottom-auto  fixed right-6 bottom-20 md:relative rounded-md md:mt-3 md:h-auto md:grow md:block p-2 overflow-auto max-w-[240px] md:max-w-none`}>
 
     <form onSubmit={submit} className='grid grid-rows-[1fr,5fr,1fr] h-full ' > 
          

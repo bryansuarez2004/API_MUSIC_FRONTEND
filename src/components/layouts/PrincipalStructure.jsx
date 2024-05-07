@@ -4,6 +4,7 @@ import Aside from './Aside'
 import { useDispatch, useSelector } from 'react-redux'
 import { onModePlay } from '../../store/slices/playTrack.slice'
 import ListenTracks from './ListenTracks'
+import TrackPause from './TrackPause'
 
 const PrincipalStructure = () => {
 
@@ -21,9 +22,7 @@ const PrincipalStructure = () => {
     
     <Outlet />
     {
-       (!modePlay && trackInPlay.name) && <div className={`${modeBackPack ? 'left-[20%] w-[79%]' : 'left-0 w-full '} mb-[70px] md:mb-0 h-[60px] bg-teal-950 bottom-0  transition-all duration-200 fixed z-50`}>
-
-       </div>
+       (!modePlay && trackInPlay.name) && <TrackPause />
     }
     </div>
     <ListenTracks />
